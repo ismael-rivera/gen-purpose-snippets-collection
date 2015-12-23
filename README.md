@@ -1,1 +1,1 @@
-# greeting-card-wp-theme
+# pati-greeting-card-wp-theme
