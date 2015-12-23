@@ -4,26 +4,15 @@ module.exports = function(grunt) {
   
   var libass = "assets";
   var imglobal = libass + "/img";
-  var cssglobal = libass + "dev/css";
-  var cssglobalibs = libass + "dev/css/csslibs";
-  var jsglobal = libass + "dev/js";
-  var jsglobalibs = libass + "dev/js/jslibs"; 
+  var cssglobal = libass + "/css";
+  var cssglobalibs = libass + "/css/libs";
+  var jsglobal = libass + "/js";
+  var jsglobalibs = libass + "/js/libs"; 
   
   grunt.initConfig({
 	  
     pkg: grunt.file.readJSON("package.json"),
 	
-	/*CSSmin-----------------------------------------------------------*/
-	
-	cssmin: {
-       combine: {
-          files: { "assets/prod/css/compiled.css": 
-				 [ cssglobal + "/reset.css", 
-				   cssglobal + "/screen.css",
-				 ]
-		   }
-       }
-    },
 	 
 	 /*Grunt Watch-----------------------------------------------*/
 	 watch: {
@@ -83,8 +72,6 @@ module.exports = function(grunt) {
   
   //Leave this for the end
   
-  grunt.loadNpmTasks("grunt-contrib-concat");
-  grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks("grunt-contrib-watch");
 
