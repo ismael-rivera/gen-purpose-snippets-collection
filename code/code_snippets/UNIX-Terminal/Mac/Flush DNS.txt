@@ -1,0 +1,7 @@
+To clear DNS cache in Snow Leopard, just type this in your Terminal and hit enter.
+	
+dscacheutil -flushcache
+
+To view a more detailed stats of your dns cache activity
+
+dscacheutil -statistics

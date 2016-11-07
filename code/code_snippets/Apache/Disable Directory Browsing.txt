@@ -1,0 +1,8 @@
+No Directory Browsing
+
+Its not a good idea to allow your visitors to browse through your entire directory. This is an easy way to find out about directory structures and this makes it easier for hackers to lookout for security holes.
+
+In order to stop this, simply add the piece of 2 lines in your .htaccess in the root directory of your WordPress blog.
+
+# disable directory browsing
+Options All -Indexes

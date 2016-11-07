@@ -1,0 +1,33 @@
+taken from: http://www.wprecipes.com/how-to-get-the-first-image-from-the-post-and-display-it
+
+How to: Get the first image from the post and display it
+
+Most WordPress users are using custom fields to display thumbs on their blog homepage. It is a good idea, but do you know that with a simple php function, you can grab the first image from the post, and display it. Just read on.
+
+First, paste this function on your functions.php file.
+--------------------
+
+function catch_that_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  if(empty($first_img)){ //Defines a default image
+    $first_img = "/images/default.jpg";
+  }
+  return $first_img;
+}
+
+----------------------
+
+Once done, you can simply call the function within the loop to display the first image from the post:
+
+----------------------
+
+<?php echo catch_that_image() ?>
+
+
+

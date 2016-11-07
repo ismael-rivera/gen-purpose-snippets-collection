@@ -1,0 +1,25 @@
+//Loading an external swf file and casting it as a useable movie clip
+ 
+var thisMovieClip:MovieClip;
+
+ 
+
+var thisLoader:Loader = new Loader();
+
+thisLoader.contentLoaderInfo.addEventListener(Event.INIT, doneLoading);
+
+ 
+
+thisLoader.load( new URLRequest("clip1.swf") );
+
+ 
+
+function doneLoading(evt:Event):void {
+
+thisMovieClip = MovieClip(thisLoader.content);
+
+stage.addChild(thisMovieClip);
+
+thisMovieClip.stop();
+
+}

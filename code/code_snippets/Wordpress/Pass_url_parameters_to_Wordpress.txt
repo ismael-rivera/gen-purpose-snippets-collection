@@ -1,0 +1,35 @@
+/* Plugin Name: Parameter
+Plugin URI: http://webopius.com/
+Description: A plugin to allow parameters to be passed in the URL and recognized by WordPress
+Author: Adam Boyse
+Version: 1.0
+Author URI: http://www.webopius.com/
+*/
+	/*add_filter('query_vars', 'parameter_queryvars' );
+	function parameter_queryvars( $qvars )
+	{
+	$qvars[] = ' myvar';
+	return $qvars;
+	}*/
+
+
+/*
+"Note: Query vars are not necessarily the same thing as query args in URLs (e.g., add_query_arg( 'foo' ). Query vars should only be registered for parameters that actually affect the behavior of WP_Query, and not just for any value passed in the URL. See #16373 for details."
+
+However if all you want to do is pass the parameters to the url without the need to query for them then it is better to use the code example below for adding to (most of) the permalinks used by a Wordpress site.
+*/
+
+function changePermalinks($permalink, $post) {
+     $new_permalink = add_query_arg( 'lang', 'es', $permalink);
+     return $new_permalink;
+    }
+
+    add_filter( 'post_link', 'changePermalinks', 10, 3);
+    add_filter( 'page_link', 'changePermalinks', 10, 3);
+    add_filter( 'post_type_link', 'changePermalinks', 10, 3);
+    add_filter( 'category_link', 'changePermalinks', 11, 3);
+    add_filter( 'tag_link', 'changePermalinks', 10, 3);
+    add_filter( 'author_link', 'changePermalinks', 11, 3);
+    add_filter( 'day_link', 'changePermalinks', 11, 3);
+    add_filter( 'month_link', 'changePermalinks', 11, 3);
+    add_filter( 'year_link', 'changePermalinks', 11, 3);

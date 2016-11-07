@@ -1,0 +1,12 @@
+Replace space with _
+
+
+var str = "This string&#160;has too&nbsp;many spaces.";
+var result = str.replace(/(\s|&nbsp;|&\#160;)+/gi, "_");
+document.write(result);
+
+For added impact, If you also want to convert any Uppercase letters into lowercase too and .toLowerCase();
+
+var str = "This string&#160;has too&nbsp;many spaces.";
+var result = str.replace(/(\s|&nbsp;|&\#160;)+/gi, "_");
+document.write(result.toLowerCase(););

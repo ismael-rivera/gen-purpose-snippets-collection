@@ -1,0 +1,29 @@
+//Disable plugin update notification for a specific plugin in WordPress 3.1
+
+/*REMOVE OR DISABLE UPDATE FUNCTION FROM A SPECIFIC PLUGIN
+Just  quick sniplet of code to drop into a plugin file to disable plugin update notifications.
+
+The reason i’ve written this is a plugin which has been heavily modified has a update, and, wanted to stop hearing about it; Sure, I could’ve just changed the name, but this felt more Politically Correct (and isn’t that what we’re all supposed to do!?)
+
+So, The code:
+*/
+
+add_filter('site_transient_update_plugins', 'dd_remove_update_nag');
+function dd_remove_update_nag($value) {
+ unset($value->response[ plugin_basename(__FILE__) ]);
+ return $value;
+}
+
+/*
+additional info-
+Steve said:
+
+Hello, it seems like a simple solution blocking pluin update notifications. Question: Where exactly do I drop the above mentioned code? In its own little file that I put in the main directory of the plugin itself? Please advise. Thank you.
+
+Ryan said:
+
+Steve
+
+just copy and paste that code in the main .php file of the plugin in question, I don’t think location matters as long as it is within PHP tags.
+
+*/

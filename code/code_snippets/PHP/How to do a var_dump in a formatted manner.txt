@@ -1,0 +1,19 @@
+var_dump done in a visually organized format
+
+echo "<pre>";
+var_dump($var);
+echo "</pre>";
+
+Funny you should ask that, I just wrote a short function to save me the pain of having to do this so much. 
+
+function pre($option = "open"){                   
+  if (is_object($option) || is_array($option)):
+    print "<pre>";
+    print_r($option);
+    print "</pre>";
+  else:
+    $option=="open"?print "<pre>": print "</pre>";
+  endif;
+}   
+
+If you pass an array or an object to it, it will print it inside pre tags. If you just want an opening tag, then do not pass an argument. If you want a closing tag, pass it any other argument (e.g. 1) 

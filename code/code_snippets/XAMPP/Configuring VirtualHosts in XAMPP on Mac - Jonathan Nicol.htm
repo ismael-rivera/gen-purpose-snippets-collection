@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/ -->
+<html class="js backgroundsize wf-proximanova-n7-active wf-proximanova-n4-active wf-proximanova-i7-active wf-proximanova-i4-active wf-active" lang="en-US" prefix="og: http://ogp.me/ns#"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="http://jonathannicol.com/cms/wp-content/themes/jonathannicol/favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://jonathannicol.com/feed/">
+
+
+<!-- This site is optimized with the Yoast SEO plugin v3.7.0 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol">
+<meta property="og:description" content="A few weeks back I rejoined the “Cult of Mac” when I replaced my old Asus notebook with a MacBook Pro, and since then I’ve been busy settling into my new OS X workflow. I do all my development locally, so one of the first applications I installed was XAMPP, a cross platform Apache/MySQL/PHP stack. …">
+<meta property="og:url" content="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/">
+<meta property="og:site_name" content="Jonathan Nicol">
+<meta property="article:section" content="Programming">
+<meta property="article:published_time" content="2012-03-11T04:02:51+00:00">
+<meta property="article:modified_time" content="2014-06-04T16:51:36+00:00">
+<meta property="og:updated_time" content="2014-06-04T16:51:36+00:00">
+<!-- / Yoast SEO plugin. -->
+
+		<script async="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/jonathannicol.com\/cms\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.3"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="new-smileys-css" href="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/new-smileys.css" type="text/css" media="all">
+<link rel="stylesheet" id="jonathannicol-style-css" href="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/style.css" type="text/css" media="all">
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/swfobject.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/modernizr.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/zyx6qig.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/jquery.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/jquery-migrate.min.js"></script>
+<link rel="https://api.w.org/" href="http://jonathannicol.com/wp-json/">
+<link rel="alternate" type="application/json+oembed" href="http://jonathannicol.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fjonathannicol.com%2Fblog%2F2012%2F03%2F11%2Fconfiguring-virtualhosts-in-xampp-on-mac%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://jonathannicol.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fjonathannicol.com%2Fblog%2F2012%2F03%2F11%2Fconfiguring-virtualhosts-in-xampp-on-mac%2F&amp;format=xml">
+      <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><style type="text/css">@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/03034e/00000000000000003b9ad1b1/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:700;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/5a684a/00000000000000003b9ad1b2/27/l?subset_id=2&fvd=i7) format("woff2");font-weight:700;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/edab9a/00000000000000003b9ad1b9/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:400;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/1b9fb4/00000000000000003b9ad1ba/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" charset="UTF-8" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/stats.js"></script></head>
+<body class="single single-post postid-2242 single-format-standard section-blog page-configuring-virtualhosts-in-xampp-on-mac" data-pinterest-extension-installed="cr2.0.4">
+  <header class="row site-header">
+    <h1 class="site-title col-4">
+      <a href="http://jonathannicol.com/">Jonathan Nicol</a>
+    </h1>
+    <nav class="nav-primary col-4 js-nav-primary">
+      <h3 class="menu-toggle js-menu-toggle-btn"><span>Menu</span></h3>
+      <ul id="menu-primary-navigation-menu" class="nav-menu js-nav-menu"><li id="menu-item-2979"><a href="http://jonathannicol.com/work/">Work</a></li>
+<li id="menu-item-2985"><a href="http://jonathannicol.com/blog/">Blog</a></li>
+<li id="menu-item-2980"><a href="http://jonathannicol.com/about/">About</a></li>
+<li id="menu-item-2982"><a href="http://jonathannicol.com/contact/">Contact</a></li>
+</ul>    </nav>
+  </header>
+
+<div class="row">
+  <div class="col-6">
+
+    <!-- Post -->
+    
+      
+<article class="post row">
+  <footer class="post-meta">
+    <div class="u-module">
+      <time class="post-date" datetime="2012-10-15 19:00">11 Mar 2012</time>
+      <a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comments" class="post-comments-link">53</a>    </div><!-- /.u-module -->
+  </footer><!-- /.post-meta -->
+  <div class="post-content">
+    <div class="u-module">
+      <h1 class="post-title">Configuring VirtualHosts in XAMPP on Mac</h1>
+      <p>A few weeks back I rejoined the “Cult of Mac” when I replaced my old Asus notebook with a MacBook Pro, and since then I’ve been busy settling into my new OS X workflow. I do all my development locally, so one of the first applications I installed was <a href="http://www.apachefriends.org/en/xampp-macosx.html">XAMPP</a>, a cross platform Apache/MySQL/PHP stack. While I know that <a href="http://www.mamp.info/">MAMP</a> is very popular on Mac, I have been using XAMPP for many years so I thought I’d stick with what I know.</p>
+<p>Installing XAMPP was a snap, but when I came to create my own <a href="http://httpd.apache.org/docs/2.0/vhosts/">Apache VirtualHosts</a> things started getting fiddly. Here are the steps I followed to get everything running smoothly.</p>
+<p><span id="more-2242"></span></p>
+<h2>What are VirtualHosts?</h2>
+<p>First, some quick background on what we’re trying to achieve.</p>
+<p>VirtualHosts allow Apache to map a hostname to a directory on the filesystem. You can set up as many VirtualHosts as you need, so that each website operates under its own hostname. For example, you might want to map <code>mysite.local</code> to <code>/Users/yourusername/mysite</code>. To test your development site all you would need to do is plug “http://mysite.local” into your browser’s address bar.</p>
+<h2>Enable VirtualHosts</h2>
+<p>The first thing you’ll need to do is open the file <code>/Applications/XAMPP/xamppfiles/etc/httpd.conf</code> in your favourite text editor. Look for the following lines:</p>
+<pre><code class="language-none"># Virtual hosts
+#Include /Applications/XAMPP/etc/extra/httpd-vhosts.conf</code></pre>
+<p>Uncomment the second line by removing the hash (<code>#</code>), so that Apache loads your custom VirtualHosts configuration file:</p>
+<pre><code class="language-none"># Virtual hosts
+Include /Applications/XAMPP/etc/extra/httpd-vhosts.conf</code></pre>
+<h2>Create your VirtualHosts</h2>
+<p>Open the file <code>/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf</code>. Towards the bottom of the file you will see some example VirtualHosts, which you should comment out or delete.</p>
+<p>At the bottom of the file, add ‘localhost’ as the default named VirtualHost:</p>
+<pre><code class="language-none"># localhost
+&lt;VirtualHost *:80&gt;
+    ServerName localhost
+    DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs"
+    &lt;Directory "/Applications/XAMPP/xamppfiles/htdocs"&gt;
+        Options Indexes FollowSymLinks Includes execCGI
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+<p>This step is necessary to ensure that http://localhost still points at XAMPP’s <code>htdocs</code> directory once we’ve created our custom VirtualHosts. Personally I don’t use the <code>htdocs</code> directory a lot, but occasionally it’s useful to have somewhere to perform quick tests.</p>
+<p>Now you are ready to create your own VirtualHosts. After the default localhost that you just created, add:</p>
+<pre><code class="language-none"># My custom host
+&lt;VirtualHost *:80&gt;
+    ServerName mysite.local
+    DocumentRoot "/Users/yourusername/path/to/your/site"
+    &lt;Directory "/Users/yourusername/path/to/your/site"&gt;
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+    ErrorLog "logs/mysite.local-error_log"
+&lt;/VirtualHost&gt;</code></pre>
+<p>In the above example you should replace “mysite.local” with your own hostname. This can be anything you wish, but make sure you choose a hostname that won’t conflict with a real domain name. Using a .local extension makes it obvious that the site is hosted locally rather than on a public web server.</p>
+<p>The path to your website can point at any folder in your OS X user directory. I store most of my sites inside of <a href="https://www.dropbox.com/">Dropbox</a> so that I can access them on both my home and work machines. If your path includes spaces, make sure you enclose it in quotes, like in my example.</p>
+<h2>Edit your hosts file</h2>
+<p>Once you’ve saved your <code>httpd.conf</code> and <code>httpd-vhosts.conf</code> files, the next step is to edit your OS X <a href="http://en.wikipedia.org/wiki/Hosts_(file)">hosts file</a> so it knows how to handle your new <code>ServerName</code>. The hosts file is used by OS X to map hostnames to IP addresses. In this case we want to map your new <code>ServerName</code> to the IP address 127.0.0.1, which is your localhost.</p>
+<p>Fire up a Terminal instance, and at the prompt type the following command:</p>
+<pre class=" language-bash"><code class=" language-bash" data-language="bash">sudo nano <span class="token operator">/</span>etc<span class="token operator">/</span>hosts</code></pre>
+<p>Enter your OS X password when prompted, and the hosts file will be opened in the <a href="http://en.wikipedia.org/wiki/GNU_nano">nano</a> text editor. You’ll see that the hosts file already contains some default hostname mappings (e.g. “127.0.0.1 localhost”). Use your keyboard’s arrow keys to navigate to the bottom of the file and add your own mapping:</p>
+<pre><code class="language-none"># XAMPP VirtualHost mappings
+127.0.0.1 mysite.local</code></pre>
+<p>Save the host file using the key combo <code>control+o</code>, and pressing return when prompted to choose the filename. Close the file using <code>control+x</code>.</p>
+<h2>Restart Apache</h2>
+<p>So that your changes take effect, restart Apache. This can be done using XAMPP Control, which is found at <code>/Applications/XAMPP/XAMPP Control.app</code>.</p>
+<p>Point your browser at http://mysite.local (or whatever ServerName you chose) and you should see your website. However, there’s a chance that instead you’ll be faced with a…</p>
+<h2>403 error</h2>
+<p>Because Apache runs as the ‘nobody’ user by default, it may not have adequate permission to browse your OS X user directory or some of its subdirectories, in which case you’ll see a 403 ‘access forbidden’ error when you try and view your development site. Similarly, you may find that although you can view your dev site, PHP throws errors when you attempt to write files or make directories on the filesystem.</p>
+<p>To fix this you can configure Apache to run as your OS X user. Open <code>/Applications/XAMPP/xamppfiles/etc/httpd.conf</code> and look for the following lines:</p>
+<pre><code class="language-none"># User/Group: The name (or #number) of the user/group to run httpd as.
+# It is usually good practice to create a dedicated user and group for
+# running httpd, as with most system services.
+#
+User daemon
+Group daemon</code></pre>
+<p>Change <code>User</code> to your OS X username, and save the file:</p>
+<pre><code class="language-none">User yourusername</code></pre>
+<p>Restart Apache and you should now be able to navigate your site without any issues, including manipulating files and folders using PHP.</p>
+<p>If you have problems viewing the XAMPP splash pages at <code>http://localhost</code> now that Apache is running as your user (e.g. nothing happens when you try to set the language), then you’ll need to give your user read/write privileges on the file <code>/Applications/XAMPP/xamppfiles/htdocs/xampp/lang.tmp</code>.  </p>
+<p>Making the change I’ve described above carries certain security risks, and if you choose to run Apache as your OS X user then you’ll need to be quite certain that XAMPP is not accessible from outside your local network. From what I understand, XAMPP’s built in security features ensure that <a href="http://bravo.newnetenterprises.com/wordpress/xampp/the-basics-of-xampp-security/">this is the case</a> out-of-the-box, and it is straightforward to <a href="http://www.apachefriends.org/en/xampp-macosx.html#873">beef up security</a> for additional piece of mind.</p>
+<p>If you’re not convinced that it’s safe to let Apache run as your OS X user, another option is to <a href="http://stackoverflow.com/questions/2001881/correct-owner-group-permissions-for-apache-2-site-files-folders-under-mac-os-x">change the permissions</a> of your dev directories so that the ‘nobody’ or ‘_www’ user can read/write to them.I suspect that I would quickly tire of setting folder permissions, which is why I have opted to take the path of least resistance!</p>
+<h2>Conclusion</h2>
+<p>Hopefully this post helps someone else to get XAMPP up and running on OS X. I imagine that MAMP Pro streamlines this process somewhat (I know it has a wizard for creating VirtualHosts), but as long as you don’t mind getting your hands dirty XAMPP is a fantastic way to learn how Apache actually works.</p>
+    </div><!-- /.u-module -->
+    
+<div id="comments" class="comments-area">
+
+  
+      <h2 class="comments-title rule">
+      53 thoughts on “<span>Configuring VirtualHosts in XAMPP on Mac</span>”    </h2>
+
+    
+    <ol class="comment-list">
+      		<li class="comment even thread-even depth-1" id="comment-231293">
+				<div id="div-comment-231293" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/5e3af9c38e8cda7d049340533a7bf1d6" srcset="http://2.gravatar.com/avatar/5e3af9c38e8cda7d049340533a7bf1d6?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Stu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-231293">
+			March 11, 2012 at 6:40 am</a>		</div>
+
+		<p>Thanks Jonathan. I used to use XAMPP, then MacPorts, but now I’m using MAMP. I’m not sure why, but I imagine it was something to do with the simplicity. I’ll know where to look for instructions about vhosts if I go back to using XAMPP though.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-231392">
+				<div id="div-comment-231392" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-231392">
+			March 11, 2012 at 1:02 pm</a>		</div>
+
+		<p>@Stu I will probably spring for a copy of MAMP Pro, but the challenge of getting XAMPP to work was too tempting!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-276170">
+				<div id="div-comment-276170" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/edea8810ac48fcf83b47516b3cc3f82e" srcset="http://2.gravatar.com/avatar/edea8810ac48fcf83b47516b3cc3f82e?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">mauro</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-276170">
+			July 16, 2012 at 10:55 pm</a>		</div>
+
+		<p>following your instructions only the front page would work for some reason giving 404 error code on the rest of my drupal installation.</p>
+<p>i went searching (for a way to suicide) for other info in virtual servers and i used this code:</p>
+<p>Options All<br>
+AllowOverride All<br>
+Order allow,deny<br>
+Allow from all</p>
+<p>replaced with yours </p>
+<p>Options Indexes FollowSymLinks Includes execCGI<br>
+AllowOverride None<br>
+Order Allow,Deny<br>
+Allow From All</p>
+<p>and it fixed it</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-276467">
+				<div id="div-comment-276467" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-276467">
+			July 17, 2012 at 4:43 pm</a>		</div>
+
+		<p>Good catch Mauro. For htaccess rewrites to work AllowOverride needs to be set to All instead of None. I will amend my example.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-287409">
+				<div id="div-comment-287409" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/0e67430eb71337a6a512b7f27c0f218d" srcset="http://0.gravatar.com/avatar/0e67430eb71337a6a512b7f27c0f218d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.eriksmithdesigns.com/" rel="external nofollow" class="url">Erik</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-287409">
+			August 13, 2012 at 6:42 am</a>		</div>
+
+		<p>Question which app works best for the Mac’s XAMPP or MAMP, I have XAMPP installed; but would like to go with what’s going to give me less aches and pains??? I’m using a Mac Mini <span class="wp-smiley emoji emoji-smile" title=":)">:)</span> </p>
+<p>Erik</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-288599">
+				<div id="div-comment-288599" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/bd8852b32db151a9d026b0db88cf8464" srcset="http://2.gravatar.com/avatar/bd8852b32db151a9d026b0db88cf8464?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://thoughtfulviewfinder.in/" rel="external nofollow" class="url">Mihir Chhatre</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-288599">
+			August 16, 2012 at 9:24 pm</a>		</div>
+
+		<p>Hello,</p>
+<p>Could you probably do a tutorial on how we can setup a xampp server and share it locally on a dynamic IP address host? I have been having a hard time figuring it out!</p>
+<p>Thanks,<br>
+Mihir.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-288910">
+				<div id="div-comment-288910" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/882627ed1050b3c87ed9d0d3fff79746" srcset="http://2.gravatar.com/avatar/882627ed1050b3c87ed9d0d3fff79746?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.iconpractice.com/" rel="external nofollow" class="url">Matt</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-288910">
+			August 17, 2012 at 3:19 pm</a>		</div>
+
+		<p>Thanks for this.  Most tutorials are for PC which leave out the editing of the hosts file!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-309877">
+				<div id="div-comment-309877" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/6400068f431af20ba8e4a3ef16abc63b" srcset="http://0.gravatar.com/avatar/6400068f431af20ba8e4a3ef16abc63b?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">John</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-309877">
+			October 9, 2012 at 9:02 am</a>		</div>
+
+		<p>Thank you very much, this got me up and running in minutes!  Outstanding!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-315752">
+				<div id="div-comment-315752" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/04694209c203243545e4db92a9c340ad" srcset="http://0.gravatar.com/avatar/04694209c203243545e4db92a9c340ad?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Anthony</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-315752">
+			October 20, 2012 at 8:23 pm</a>		</div>
+
+		<p>Thank you so much, this was a life saver. I’m setting up an Intranet Training Site at work through WordPress and we’re trying to have links access files on our network shares, this works perfectly.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-315952">
+				<div id="div-comment-315952" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/03c2c7e853de904e43422c00b19eeb72" srcset="http://0.gravatar.com/avatar/03c2c7e853de904e43422c00b19eeb72?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Renata</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-315952">
+			October 21, 2012 at 12:08 pm</a>		</div>
+
+		<p>You saved my life! Thank you thank you thank you so freaking much!!! Your post made my day! Thanks for sharing <span class="wp-smiley emoji emoji-smile" title=":)">:)</span> </p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-319771">
+				<div id="div-comment-319771" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/8ede6cffc917dc30932a068ba42ef49f" srcset="http://2.gravatar.com/avatar/8ede6cffc917dc30932a068ba42ef49f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Den</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-319771">
+			October 28, 2012 at 9:48 pm</a>		</div>
+
+		<p>So helpful! Thank you for a very complete (and working) example!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-327236">
+				<div id="div-comment-327236" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/edea8810ac48fcf83b47516b3cc3f82e" srcset="http://2.gravatar.com/avatar/edea8810ac48fcf83b47516b3cc3f82e?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Mauro</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-327236">
+			November 8, 2012 at 6:49 am</a>		</div>
+
+		<p>There is a an error in the path of the Forbidden 403 fix.</p>
+<p>Quote “To fix this you can configure Apache to run as your OSX user. Open /Applications/XAMPP/xamppfile/etc/httpd.conf and look for the following lines…”</p>
+<p>It should be /Applications/XAMPP/xamppfiles/etc/httpd.conf.</p>
+<p>Good tutorial!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor even thread-even depth-1" id="comment-327424">
+				<div id="div-comment-327424" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-327424">
+			November 8, 2012 at 12:45 pm</a>		</div>
+
+		<p>@Mauro Good spotting!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-337212">
+				<div id="div-comment-337212" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/8817a7e32078422e4dc80ff22aabc28f" srcset="http://2.gravatar.com/avatar/8817a7e32078422e4dc80ff22aabc28f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Garth</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-337212">
+			November 19, 2012 at 2:48 pm</a>		</div>
+
+		<p>You’re a legend! That was really easy to follow and thanks for putting in the bit about the 403 error. Thanks!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-338316">
+				<div id="div-comment-338316" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/9a2f2e2338fa6120ee9c0ea4f2769663" srcset="http://0.gravatar.com/avatar/9a2f2e2338fa6120ee9c0ea4f2769663?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.mhdesign.co.nz/" rel="external nofollow" class="url">Mike</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-338316">
+			November 20, 2012 at 6:03 pm</a>		</div>
+
+		<p>Great tutorial — I’m primarily a designer so command-line stuff really worries me but I was quite comfortable going through step by step. EXCEPT where I had a 404 error I now have ‘the dreaded 403 error’. I’ve changed the httpd.conf file so that user ‘nobody’ is replaced by me. But I still get the error… any tips?</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-343656">
+				<div id="div-comment-343656" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/51c859034af395bfe7948ddac6bd1169" srcset="http://2.gravatar.com/avatar/51c859034af395bfe7948ddac6bd1169?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Elisa</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-343656">
+			November 26, 2012 at 6:17 pm</a>		</div>
+
+		<p>Works for me. Thanks so much!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-368971">
+				<div id="div-comment-368971" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/123c640f2d121683c0d0d12c219f8402" srcset="http://1.gravatar.com/avatar/123c640f2d121683c0d0d12c219f8402?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">ravi</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-368971">
+			December 18, 2012 at 8:49 pm</a>		</div>
+
+		<p>Awesome! Thanks so much!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-408480">
+				<div id="div-comment-408480" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/8087273ba7f71df8da8925f45e763271" srcset="http://2.gravatar.com/avatar/8087273ba7f71df8da8925f45e763271?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">pjohnkeane</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-408480">
+			January 21, 2013 at 11:59 am</a>		</div>
+
+		<p>Really handy – thanks!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-412521">
+				<div id="div-comment-412521" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/876b7359cf40893d96320bbe764a6b5d" srcset="http://2.gravatar.com/avatar/876b7359cf40893d96320bbe764a6b5d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">purusottama</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-412521">
+			January 24, 2013 at 11:50 pm</a>		</div>
+
+		<p>Hello ,<br>
+M try above the line .<br>
+But still a problem ie in start Apache is show me “Apache busy ”<br>
+if any think to do except than this .</p>
+<p>Thank you<br>
+purusottama</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-422659">
+				<div id="div-comment-422659" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/082a037dfa4bbcf866501fa0de8d989e" srcset="http://0.gravatar.com/avatar/082a037dfa4bbcf866501fa0de8d989e?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://joshuak.me/" rel="external nofollow" class="url">joshuak</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-422659">
+			February 2, 2013 at 8:55 am</a>		</div>
+
+		<p>This saved my life! Thank you!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-425165">
+				<div id="div-comment-425165" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/cc07a0bd824999235e366d4bd0b2c81e" srcset="http://0.gravatar.com/avatar/cc07a0bd824999235e366d4bd0b2c81e?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://mlmaxwell.net/" rel="external nofollow" class="url">Lauren</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-425165">
+			February 4, 2013 at 10:02 am</a>		</div>
+
+		<p>Thank you for this. This is amazing and so helpful!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-459239">
+				<div id="div-comment-459239" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/52d74e8ab5af0c78c9afa394a6a83995" srcset="http://2.gravatar.com/avatar/52d74e8ab5af0c78c9afa394a6a83995?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">tknox</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-459239">
+			April 12, 2013 at 9:06 pm</a>		</div>
+
+		<p>This is pretty awesome, but I’m getting a bit of an odd result.  Apache appears to think that now when accessing the virtual host through whatever.local it just displays the directory contents.  It doesn’t display an index page, php isn’t processed (just displays code plaintext)… any ideas why?</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-463736">
+				<div id="div-comment-463736" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/bbbf73d70984ea76fc001836032950de" srcset="http://2.gravatar.com/avatar/bbbf73d70984ea76fc001836032950de?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://tonioriol.blogspot.com/" rel="external nofollow" class="url">Toni Oriol</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-463736">
+			April 21, 2013 at 3:04 am</a>		</div>
+
+		<p>Hi,</p>
+<p>Many thanks for the tutorial, it’s the best I’ve found. Only one thing: some routes like this “/Applications/XAMPP/xamppfile/etc/httpd.conf” are misspelled, you need to change “xamppfile” by “xamppfiles”. Sorry for my english, I hope you understand what I’m saying.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-464809">
+				<div id="div-comment-464809" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-464809">
+			April 22, 2013 at 8:32 pm</a>		</div>
+
+		<p>@Toni Orial you are quite right! I’ve correct my misspelling.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-472901">
+				<div id="div-comment-472901" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/31f703a7287a29e6fde067550afedf5b" srcset="http://0.gravatar.com/avatar/31f703a7287a29e6fde067550afedf5b?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://catatanbodoh.wordpress.com/" rel="external nofollow" class="url">Wigid</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-472901">
+			May 14, 2013 at 10:21 pm</a>		</div>
+
+		<p>Thank you so much!<br>
+your saving my day</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-473279">
+				<div id="div-comment-473279" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/03009598dec84616912c2199c60373d4" srcset="http://0.gravatar.com/avatar/03009598dec84616912c2199c60373d4?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://wisentechnologies.com/it-courses/php-training.aspx" rel="external nofollow" class="url">PHP Training in chennai</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-473279">
+			May 15, 2013 at 9:37 pm</a>		</div>
+
+		<p>Add the below command with Directory tag of httpd.conf<br>
+Options FollowSymLinks</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor even thread-even depth-1" id="comment-516940">
+				<div id="div-comment-516940" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-516940">
+			September 11, 2013 at 7:18 pm</a>		</div>
+
+		<p>I have updated these instructions to reflect recent XAMPP versions. Specifically:</p>
+<p>– My example VirtualHost now includes the “Require all granted” directive instead of “Allow From All” and “Order Allow,Deny”.<br>
+– The directory path for the localhost VirtualHost has been updated.<br>
+– XAMPP now runs Apache under the user daemon/daemon instead of nobody/nogroup, and this is reflected in the instructions.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-518116">
+				<div id="div-comment-518116" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/90912daf96471a290062dbae8d536b5b" srcset="http://0.gravatar.com/avatar/90912daf96471a290062dbae8d536b5b?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.fancydesign.de/" rel="external nofollow" class="url">Christian</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-518116">
+			September 16, 2013 at 4:05 am</a>		</div>
+
+		<p>Thanks a lot for this tutorial, works fine!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-521286">
+				<div id="div-comment-521286" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/4a6e95a65f56727c58024f3752fef00d" srcset="http://1.gravatar.com/avatar/4a6e95a65f56727c58024f3752fef00d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Matt Stone</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-521286">
+			October 3, 2013 at 7:39 pm</a>		</div>
+
+		<p>Thanks Jonathan, very handy guide.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-525292">
+				<div id="div-comment-525292" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/02674f68d3b69bb15e679c40297b3b05" srcset="http://0.gravatar.com/avatar/02674f68d3b69bb15e679c40297b3b05?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-525292">
+			October 18, 2013 at 7:42 am</a>		</div>
+
+		<p>Thanks for the great tutorial – clear and to the point. I’ve got vhosts set up on my machine now.</p>
+<p>Here’s a tip for people having 500 Server errors: Make sure your project directory is not inside of your main htdocs directory. If it is, apache will end up in a redirect loop. You’ll need to put each of your projects somewhere else, like your home folder.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-527316">
+				<div id="div-comment-527316" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/409634b9258f9d9e4c69beac5f94d249" srcset="http://1.gravatar.com/avatar/409634b9258f9d9e4c69beac5f94d249?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Robert</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-527316">
+			October 25, 2013 at 2:43 am</a>		</div>
+
+		<p>Thanks Jonathan, this really helped me out. I’ve found an issue: while changing user daemon/daemon to [username]/daemon localhost/phpmyadmin breaks. The interface loads but trying to use it gives the error “Token mismatch” changing the user back to daemon/daemon fixes the issue.</p>
+<p>Have you come across this before and if so is there a way to get both working?</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-527472">
+				<div id="div-comment-527472" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/b05c8d010a84b35894b87280e32d4f0d" srcset="http://2.gravatar.com/avatar/b05c8d010a84b35894b87280e32d4f0d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Bart Falzarano</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-527472">
+			October 25, 2013 at 3:46 pm</a>		</div>
+
+		<p>Followed all the steps but receiving the following error when I try to navigate to mysite.  </p>
+<p>Server error!</p>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there was an error in a CGI script.</p>
+<p>If you think this is a server error, please contact the webmaster.</p>
+<p>Error 500</p>
+<p>mysite.local<br>
+Fri Oct 25 16:42:06 2013<br>
+Apache/2.2.14 (Unix) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l PHP/5.3.1 mod_perl/2.0.4 Perl/v5.10.1</p>
+<p>The error in mysite.local-error_log reads:</p>
+<p>Fri Oct 25 16:42:06 2013] [crit] [client 127.0.0.1] configuration error:  couldn’t perform authentication. AuthType not set!:</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-527478">
+				<div id="div-comment-527478" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/b05c8d010a84b35894b87280e32d4f0d" srcset="http://2.gravatar.com/avatar/b05c8d010a84b35894b87280e32d4f0d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Bart Falzarano</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-527478">
+			October 25, 2013 at 4:13 pm</a>		</div>
+
+		<p>Hi Jonathan,  </p>
+<p>Was able to resolve the Server 500 error after I added Satisfy Any and Allow from all to the httpd-vhosts.conf file in between the virtual host &lt;Directory section as listed below.  Excellent tutorial overall for configuring Virtualhosts in XAMPP for Mac!  </p>
+<p># My custom host</p>
+<p>    ServerName mysite.local<br>
+    DocumentRoot “/Users/yourusername/path/to/your/site”</p>
+<p>        Options Indexes FollowSymLinks Includes ExecCGI<br>
+        AllowOverride All<br>
+        Satisfy Any  # Added to fix the Server 500 error<br>
+       Allow from all # Added to fix the Server 500 error<br>
+        Require all granted</p>
+<p>    ErrorLog “logs/mysite.local-error_log”</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-539413">
+				<div id="div-comment-539413" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/668bec7f8bb4fc7446beb86bbd64d1e1" srcset="http://0.gravatar.com/avatar/668bec7f8bb4fc7446beb86bbd64d1e1?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">LORIS</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-539413">
+			November 27, 2013 at 6:42 am</a>		</div>
+
+		<p>Excuse my English I translated with google.</p>
+<p>Thank you, your instructions above are excellent.<br>
+I do not use mac, I use linux and I have adapted your instructions and it works<br>
+perfectly.</p>
+<p>Greetings</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-543416">
+				<div id="div-comment-543416" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/2adcae03b128c234be548760360b78db" srcset="http://2.gravatar.com/avatar/2adcae03b128c234be548760360b78db?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.jameswebdevelopment.com/" rel="external nofollow" class="url">Barry Horbal</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-543416">
+			December 4, 2013 at 9:14 am</a>		</div>
+
+		<p>You said that you like to store your sites on Dropbox, and I would like to set it up that way as well. Unfortunately, when I set it up, I am getting an “Access forbidden!” error. Here’s what I’ve got:</p>
+<p>httpd-vhosts.conf</p>
+<p>#Sing For Your Seniors</p>
+<p>        ServerName sfys.dev<br>
+        DocumentRoot “/Users/barryhjames/dropbox/www/sfys”</p>
+<p>                Options Indexes FollowSymLinks Includes ExecCGI<br>
+                AllowOverride All<br>
+                Require all granted</p>
+<p>        ErrorLog “logs/sfys.dev-error_log”</p>
+<p>Any ideas why this isn’t working? Thanks for the post!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-543594">
+				<div id="div-comment-543594" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-543594">
+			December 4, 2013 at 3:34 pm</a>		</div>
+
+		<p>@Barry Did the permissions fixes I suggested in the article help?</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-543616">
+				<div id="div-comment-543616" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/d1fe118860639c28702a74f559881d51" srcset="http://1.gravatar.com/avatar/d1fe118860639c28702a74f559881d51?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.powerhourstudios.com/" rel="external nofollow" class="url">Erling Ormar Vignisson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-543616">
+			December 4, 2013 at 4:26 pm</a>		</div>
+
+		<p>Excellent article and detailed instructions… helped me fix what was wrong my my previous attempt to set up a virtual host <span class="wp-smiley emoji emoji-smile" title=":)">:)</span> </p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-550866">
+				<div id="div-comment-550866" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/bf5375b7da927fcb992ac70bb7e6a240" srcset="http://2.gravatar.com/avatar/bf5375b7da927fcb992ac70bb7e6a240?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Jaume</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-550866">
+			December 17, 2013 at 2:20 am</a>		</div>
+
+		<p>To fix the 500 error a used that cde between the directory tag:</p>
+<p>Options Indexes Includes execCGI<br>
+AllowOverride None<br>
+Order Allow,Deny<br>
+Allow From All</p>
+<p>Good tutorial!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-568145">
+				<div id="div-comment-568145" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/88c321768cbae3b2bca5f97704424614" srcset="http://2.gravatar.com/avatar/88c321768cbae3b2bca5f97704424614?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Moses</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-568145">
+			January 24, 2014 at 1:32 pm</a>		</div>
+
+		<p>If the host path is not detected after updating  /etc/hosts, try /private/etc/hosts</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-569966">
+				<div id="div-comment-569966" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/7e159e653a7779b04fa6c42838d227ca" srcset="http://1.gravatar.com/avatar/7e159e653a7779b04fa6c42838d227ca?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">giuliam</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-569966">
+			February 2, 2014 at 2:27 am</a>		</div>
+
+		<p>Hi,</p>
+<p>thank you for the great post!</p>
+<p>I’m trying to create a virtual host on my Mac OS X 10.9.1 where I installed XAMPP. </p>
+<p>I followed your tutorial step by step, but I keep getting the Error 403. </p>
+<p>As you suggested, I tried editing the httpd.conf file by substituting</p>
+<p>User daemon<br>
+Group daemon</p>
+<p>with</p>
+<p>User my_Mac_username<br>
+Group staff</p>
+<p>and also</p>
+<p>User my_Mac_username<br>
+Group admin</p>
+<p>as well as</p>
+<p>User my_Mac_username<br>
+Group daemon</p>
+<p>but I keep getting the Error 403, and specifically, as per the log file:</p>
+<p>[Sun Feb 02 11:19:04.439293 2014] [authz_core:error] [pid 24704] [client 127.0.0.1:55398] AH01630: client denied by server configuration: /Applications/XAMPP/xamppfiles/\xe2\x80\x9c</p>
+<p>I also made sure my_Mac_user has all the permissions for the XAMPP folder and subfolders but nothing. </p>
+<p>It would be really great if you could help!</p>
+<p>Thank you very much</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-jonathan bypostauthor even thread-even depth-1" id="comment-623209">
+				<div id="div-comment-623209" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/3733209ed2e2df7f0aec3c620605847f" srcset="http://0.gravatar.com/avatar/3733209ed2e2df7f0aec3c620605847f?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.f6design.com/journal/" rel="external nofollow" class="url">Jonathan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-623209">
+			May 22, 2014 at 10:14 pm</a>		</div>
+
+		<p>@giuliam In recent versions of XAMPP your vhost needs to be configured slightly differently. Try removing:</p>
+<p><code>Allow From All<br>
+Order Allow,Deny</code></p>
+<p>and replace with:</p>
+<p><code>Require all granted</code></p>
+<p>I have updated the post to reflect this change. Sorry for the confusion.</p>
+<p>Note: You will still need to update your user/group in httpd.conf. I have found that:</p>
+<p><code>User my_Mac_username<br>
+Group staff</code></p>
+<p>works for me.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-628852">
+				<div id="div-comment-628852" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/046d544a07c391d8d18825c7d0e666b7" srcset="http://0.gravatar.com/avatar/046d544a07c391d8d18825c7d0e666b7?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Matt</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-628852">
+			June 2, 2014 at 4:44 pm</a>		</div>
+
+		<p>Thank you so much! Your thorough guide helped me with performing dev tests on my sites that are located in different directories and already had git installed, thus saving me the trouble of having to rely on htdocs solely for testing them.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-644987">
+				<div id="div-comment-644987" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/38b4bc9b64af7d424314745754056c15" srcset="http://0.gravatar.com/avatar/38b4bc9b64af7d424314745754056c15?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://easynfast.net/" rel="external nofollow" class="url">Bao Anh Le</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-644987">
+			September 9, 2014 at 8:18 am</a>		</div>
+
+		<p>Thank you so much!….<br>
+I found your tutorial really really useful!!</p>
+<p>Thank you so much once again!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-649197">
+				<div id="div-comment-649197" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/d89d81f673dac06b16cade5b4bf19954" srcset="http://1.gravatar.com/avatar/d89d81f673dac06b16cade5b4bf19954?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">manjane</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-649197">
+			September 26, 2014 at 6:19 am</a>		</div>
+
+		<p>The only good solution for the `Forbidden 403` error I’ve seen. Thank you sir!</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-662112">
+				<div id="div-comment-662112" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/1d5ec09ecf9f781db598b1da80b09b42" srcset="http://1.gravatar.com/avatar/1d5ec09ecf9f781db598b1da80b09b42?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Doppelherz</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-662112">
+			October 29, 2014 at 6:57 am</a>		</div>
+
+		<p>I followed the instructions but the 403 is still there.</p>
+<p>– Virtual Hosts enabled: check!<br>
+–  added custom host with a path folder to a simple index.html: check!<br>
+– added hosts file entry: check!<br>
+– change username: check!<br>
+– don’t know if group also has to change: ?<br>
+– restart apache server: check!<br>
+– read/write privileges to lang.tmp: check!</p>
+<p>but still 403 <span class="wp-smiley emoji emoji-sad" title=":(">:(</span>  Help me…</p>
+<p>EDIT:<br>
+If the username is changed, I cannot restart the Apache Server or even stop it. When i change it back to daemon, I can stop the server. Now I change it to my Username agein but the Apache Server wont start. What can I do know?</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-662113">
+				<div id="div-comment-662113" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/1d5ec09ecf9f781db598b1da80b09b42" srcset="http://1.gravatar.com/avatar/1d5ec09ecf9f781db598b1da80b09b42?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Doppelherz</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-662113">
+			October 29, 2014 at 7:05 am</a>		</div>
+
+		<p>Log said: AH00544: httpd: bad group name<br>
+so i changed the group name back but my username as my osx username. now the server starts and stops, but the 403 error is still there <span class="wp-smiley emoji emoji-sad" title=":(">:(</span> </p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-664617">
+				<div id="div-comment-664617" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/bcdc4dfefce6585f97d6e2656cc0f271" srcset="http://2.gravatar.com/avatar/bcdc4dfefce6585f97d6e2656cc0f271?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.cloudxiao.me/" rel="external nofollow" class="url">cloudxiao</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-664617">
+			November 3, 2014 at 10:39 pm</a>		</div>
+
+		<p>Thanks! I’ve solved my problem.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-669635">
+				<div id="div-comment-669635" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/2a198a8cfe175cd53b0c46b2ce9c323d" srcset="http://2.gravatar.com/avatar/2a198a8cfe175cd53b0c46b2ce9c323d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Jeff S.</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-669635">
+			November 12, 2014 at 7:26 am</a>		</div>
+
+		<p>I had so many problems getting around the Access Forbidden error. Your post helped me tremendously and now I am doing awesome! Thanks for your hard work.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-674381">
+				<div id="div-comment-674381" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/ee8ae4bae84db7a44b550655f7c33289" srcset="http://2.gravatar.com/avatar/ee8ae4bae84db7a44b550655f7c33289?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Fran Marzoa</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-674381">
+			November 18, 2014 at 6:01 am</a>		</div>
+
+		<p>This didn’t work for me using quotes in Directory name, since Apache insists to take such file names as relative to /Applications/XAMPP/htdocs or whatever the root dir is. It worked by removing such quotes. I mean, instead of:</p>
+<p>DocumentRoot “/Users/yourusername/path/to/your/site”</p>
+<p>use:</p>
+<p>DocumentRoot /Users/yourusername/path/to/your/site</p>
+<p>Maybe there is another way to solve it, since this could be a problem if you have directory names with spaces between (a ‘\ ‘ for each space could solve that anyway), but for me it is working this way.</p>
+<p>Now I have a permission issue, but that’s another story… <span class="wp-smiley emoji emoji-wink" title=";-)">;-)</span> </p>
+<p>PS. The quotes problem is probably related to have copy&amp;paste them from here. I have recalled that once I have a similar problem with code on other website because the quotes representing there weren’t the actual ” character, despite they look the same way.</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-682528">
+				<div id="div-comment-682528" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/b7286ca171759deb0586a775ebad2987" srcset="http://2.gravatar.com/avatar/b7286ca171759deb0586a775ebad2987?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">macandes</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-682528">
+			November 27, 2014 at 1:55 am</a>		</div>
+
+		<p>Thank you Jonathan!<br>
+User yourusername did it! <span class="wp-smiley emoji emoji-smile" title=":)">:)</span> </p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-684630">
+				<div id="div-comment-684630" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/a98a24f06e680a2bc64768568fee70f2" srcset="http://1.gravatar.com/avatar/a98a24f06e680a2bc64768568fee70f2?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">shashika hashan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-684630">
+			November 29, 2014 at 4:50 am</a>		</div>
+
+		<p>Thank you very much… <span class="wp-smiley emoji emoji-smile" title=":)">:)</span> </p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-690273">
+				<div id="div-comment-690273" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/314b04a446e5b68affd22e7c6ac885cd" srcset="http://0.gravatar.com/avatar/314b04a446e5b68affd22e7c6ac885cd?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn">Don diego delavega</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-690273">
+			December 4, 2014 at 8:09 pm</a>		</div>
+
+		<p>great tutorial , Thanks</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-690586">
+				<div id="div-comment-690586" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/daf1d9a7899bc17c2d51ce403758395d" srcset="http://1.gravatar.com/avatar/daf1d9a7899bc17c2d51ce403758395d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">			<cite class="fn"><a href="http://www.coach.com/" rel="external nofollow" class="url">Fuzzybutterfly</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jonathannicol.com/blog/2012/03/11/configuring-virtualhosts-in-xampp-on-mac/#comment-690586">
+			December 5, 2014 at 2:56 am</a>		</div>
+
+		<p>As an .net iiS user, I felt a little cautious about using PHP and XAMPP. But your articled helped me through some of the initial challenges. I have to say Whew…. and thanks.<br>
+I am certain you are on StackOverflow but I will give a shoutout to your site.<br>
+Again, thank you for the help.</p>
+<p>M</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+    </ol><!-- .comment-list -->
+
+    
+  
+      <p class="no-comments">Comments are closed.</p>
+  
+  
+</div><!-- #comments -->  </div><!-- /.post-content -->
+</article>
+
+        
+  </div><!-- /.col-6 (main content col) -->
+
+
+<aside class="col-2 sidebar">
+    
+<!-- Recent posts -->
+<section class="u-module">
+  <h3>Recent articles</h3>
+  <ul class="link-list">
+  	<li><a href="http://jonathannicol.com/blog/2015/08/02/loading-missing-images-from-a-remote-server/">Loading missing images from a remote server</a></li>
+	<li><a href="http://jonathannicol.com/blog/2015/02/19/clean-pasted-text-in-wordpress/">Clean up pasted text in WordPress</a></li>
+	<li><a href="http://jonathannicol.com/blog/2014/08/18/particleground-jquery-plugin-background-particle-systems/">Particleground: a jQuery plugin for background particle systems</a></li>
+	<li><a href="http://jonathannicol.com/blog/2014/07/07/web-designers-bookshelf/">The Web Designer’s Bookshelf</a></li>
+	<li><a href="http://jonathannicol.com/blog/2014/06/22/super-minimal-functions-php-file/">A super minimal functions.php file</a></li>
+  </ul>
+</section>
+
+<!-- Search -->
+<div class="u-module">
+  <form role="search" method="get" class="search-form" action="http://jonathannicol.com/">
+  <input class="full-width" type="text" placeholder="Search the blog" value="" name="s" title="Search for:">
+  <button type="submit" class="search-submit icon icon-search"></button>
+</form>
+</div>
+
+<!-- Categories -->
+<section class="u-module">
+  <h3>Categories</h3>
+  <ul class="link-list">
+    	<li class="cat-item cat-item-12"><a href="http://jonathannicol.com/blog/category/business/">Business</a> (10)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://jonathannicol.com/blog/category/css/">CSS</a> (21)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://jonathannicol.com/blog/category/flash/">Flash</a> (15)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://jonathannicol.com/blog/category/graphic-design/">Graphic Design</a> (9)
+</li>
+	<li class="cat-item cat-item-27"><a href="http://jonathannicol.com/blog/category/javascript/">JavaScript</a> (4)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://jonathannicol.com/blog/category/markup/">Markup</a> (12)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://jonathannicol.com/blog/category/news-reviews/">News &amp; Reviews</a> (44)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://jonathannicol.com/blog/category/programming/">Programming</a> (20)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://jonathannicol.com/blog/category/technology/">Technology</a> (13)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://jonathannicol.com/blog/category/toolbox/">Toolbox</a> (17)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://jonathannicol.com/blog/category/typography/">Typography</a> (10)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://jonathannicol.com/blog/category/web-design/">Web Design</a> (50)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://jonathannicol.com/blog/category/wordpress/">Wordpress</a> (6)
+</li>
+  </ul>
+</section>
+
+<!-- Subscribe -->
+<div class="u-module">
+  <a class="link-icon" href="http://jonathannicol.com/feed/"><span class="icon icon-rss"></span> RSS</a>
+</div>
+
+</aside><!-- /.sidebar -->
+</div><!-- /.row -->
+
+
+  <footer class="site-footer row">
+    <div class="col-2">
+      <div class="u-module">
+        <h5>Jonathan Nicol</h5>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="u-module">
+        Room 6, Level 5<br>
+        358 Lonsdale Street<br>
+        Melbourne, VIC 3000<br>
+        Australia
+      </div>
+    </div>
+    <div class="col-2 email-col">
+      <div class="u-module">
+        <script type="text/javascript">
+        //<![CDATA[
+        <!--
+        var x="function f(x){var i,o=\"\",l=x.length;for(i=0;i<l;i+=2) {if(i+1<l)o+=" +
+        "x.charAt(i+1);try{o+=x.charAt(i);}catch(e){}}return o;}f(\"ufcnitnof x({)av" +
+        " r,i=o\\\"\\\"o,=l.xelgnhtl,o=;lhwli(e.xhcraoCedtAl(1/)3=!26{)rt{y+xx=l;=+;" +
+        "lc}tahce({)}}of(r=i-l;1>i0=i;--{)+ox=c.ahAr(t)i};erutnro s.buts(r,0lo;)f}\\" +
+        "\"(5)10\\\\,d\\\"fnyu8dkw:;}7>>&3# #-(>(&5,00\\\\\\\\%+(,5~03\\\\\\\\QbZU\\" +
+        "\\W\\\\\\\\0\\\\03\\\\\\\\WY25\\\\0Q\\\\2^02\\\\\\\\^U}J17\\\\0p\\\\26\\\\0" +
+        "O\\\\\\\\E\\\\\\\\N\\\\5R00\\\\\\\\06\\\\07\\\\17\\\\\\\\NO1Crr77\\\\1r\\\\" +
+        "wt7y17\\\\\\\\tb|zQx77\\\\1i\\\\d`d6e~fa'k>Xdd6r02\\\\\\\\5]03\\\\\\\\XG6Q0" +
+        "2\\\\\\\\33\\\\03\\\\02\\\\\\\\01\\\\05\\\\03\\\\\\\\01\\\\05\\\\00\\\\\\\\" +
+        "4_00\\\\\\\\01\\\\03\\\\01\\\\\\\\00\\\\01\\\\03\\\\\\\\10\\\\05\\\\00\\\\\\"+
+        "\\\\\\r\\\\\\\\(\\\"}fo;n uret}r);+)y+^(i)t(eAodrCha.c(xdeCoarChomfrg.intr=" +
+        "So+7;12%=;y=2y*))+y05(1i>f({i+)i+l;i<0;i=r(foh;gten.l=x,l\\\"\\\\\\\"\\\\o=" +
+        "i,r va){,y(x fontincfu)\\\"\")"                                              ;
+        while(x=eval(x));
+        //-->
+        //]]>
+        </script><a href="mailto:info@jonathannicol.com" title="Send me an email">info@jonathannicol.com</a>
+
+      </div>
+    </div>
+    <div class="col-2 social-col">
+      <ul class="u-module">
+        <li><a href="http://twitter.com/mrjnicol" class="icon icon--med icon-twitter"><span class="u-screen-reader">Twitter</span></a></li>
+        <li><a href="http://github.com/jnicol" class="icon icon--med icon-github"><span class="u-screen-reader">Github</span></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/plugins.min.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/site.min.js"></script>
+<script type="text/javascript" src="./Configuring VirtualHosts in XAMPP on Mac - Jonathan Nicol_files/wp-embed.min.js"></script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51716589-1', 'jonathannicol.com');
+  ga('send', 'pageview');
+  </script>
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Page Caching using disk: enhanced
+Database Caching 65/106 queries in 0.068 seconds using disk
+
+ Served from: jonathannicol.com @ 2016-10-12 21:47:25 by W3 Total Cache --><span style="border-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 11px; line-height: 20px; font-family: &#39;Helvetica Neue&#39;, Helvetica, sans-serif; color: rgb(255, 255, 255); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; -webkit-font-smoothing: antialiased; background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(189, 8, 28);">Save</span></body></html>

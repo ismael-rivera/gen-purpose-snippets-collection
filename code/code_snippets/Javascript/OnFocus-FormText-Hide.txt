@@ -1,0 +1,4 @@
+<FORM action="http://www.domain.com" method="post">
+<INPUT type="text" size="25" value="Enter Your Default Text Here" onFocus="if(this.value == 'Enter Your Default Text Here') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Enter Your Default Text Here';}" />
+<INPUT type=submit value=Submit>
+</FORM>

@@ -1,0 +1,50 @@
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*//CODEBASE COMMENTARY
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/*
+//PLEASE KEEP THIS FILE IN YOUR PLUGINS FOLDER AND DO NOT DELETE IT
+//AS IT CONTAINS IMPORTANT DATA REGARDING NON OFFICIAL CHANGES TO 
+//TO EACH OF THE PLUGINS.
+//THE FOLLOWING IS AN EXAMPLE ON HOW TO READ THE FOLLOWING LOG
+//AND LOCATE EACH CHANGE THAT HAS BEEN LOGGED.
+//
+//
+//LOG# N - DD/MM/YY
+//PLUGIN:
+//FILE:
+//FILE DIRECTORY:
+//CODE LINE:
+//ERROR:
+//FIX:
+//
+//
+******************************************************
+*
+* _______  ___   __   __    ___      _______  _______ 
+*|       ||   | |  |_|  |  |   |    |       ||       |
+*|    ___||   | |       |  |   |    |   _   ||    ___|
+*|   |___ |   | |       |  |   |    |  | |  ||   | __ 
+*|    ___||   |  |     |   |   |___ |  |_|  ||   ||  |
+*|   |    |   | |   _   |  |       ||       ||   |_| |
+*|___|    |___| |__| |__|  |_______||_______||_______|
+**
+*						v.0.01
+/******************************************************
+*
+*/
+/*
+FIX LOG
+I was trying to figure out a way to do this in a manner that could easily *be reapplied if the plugins where to get upgraded. In the end, this is *mainly, the only thing I can do, which is to log every change and go through each error I find one by one reapplying them as there seems to be no api to connect with plugins. I'm sure there is a way but it is not well documented and so the following changes should be reapplied in case of a plugin upgrade.
+*/
+*/
+/*******************************************************/
+/*-------------------------------------------------------------------------
+//LOG# N - DD/MM/YY
+//PLUGIN:
+//FILE:
+//FILE DIRECTORY:
+//CODE LINE:
+//ERROR:
+//FIX:
+-------------------------------------------------------------------------*/

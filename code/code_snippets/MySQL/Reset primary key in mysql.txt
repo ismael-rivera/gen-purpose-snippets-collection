@@ -1,0 +1,8 @@
+Reset primary key in mysql
+---------------------
+
+You can ALTER TABLE like this:
+
+
+
+ALTER TABLE yourtable AUTO_INCREMENT = 1;

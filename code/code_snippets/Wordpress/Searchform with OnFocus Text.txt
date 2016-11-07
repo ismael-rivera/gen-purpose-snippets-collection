@@ -1,0 +1,35 @@
+/*ADD THIS CODE TO YOUR functions.php file.*/
+
+function inq_search_form( $form ) {
+
+	//Here you can edit the text that will appear in the input
+	$message="Search";
+
+	//If query was executed show the query
+	if(get_search_query()!='')
+	$query=get_search_query();
+	//else show the default message
+	else $query=$message;
+
+	//Build my form
+    $form = '<div id="search">
+<form id="searchform" action="' . home_url( '/' ) . '" method="get">
+<div>
+<table width="200" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><label class="screen-reader-text" for="s">' . __('') . '</label></td>
+    <td><input id="s" name="s" type="text" value="' . $query . '" 
+	onfocus="if(this.value==this.defaultValue)this.value=\'\';"
+	onblur="if(this.value==")this.value=this.defaultValue;"
+	/></td>
+    <td><button id="searchsubmit" type="submit" value="'. esc_attr__('Search') .'" /></td>
+  </tr>
+</table>	    
+</div>
+</form></div>
+';
+
+    return $form;
+}
+//This function replaces the default functionality of get_search_form to the set by inq_search_form
+add_filter( 'get_search_form', 'inq_search_form' );

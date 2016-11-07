@@ -1,0 +1,29 @@
+I found an extremely useful article that suggests using PHP's ReflectionClass to introspect what a parent class expects, here: PHP – Reflection Class – Determine Parent Method Signature.
+
+I found no answer providing this tip on Stack Overflow, so I decided to submit this self-answered question with (my own extended version of) the article's sample code.
+
+Use this snippet to learn more about the class you're trying to extend:
+
+
+<div class="test_console">
+<?php
+
+    $className = 'Walker'; // the class you're trying to extend
+
+    echo "<pre>\n";
+    echo "CLASS : $className\n\n========\n\n";
+    $refClass = new ReflectionClass($className);
+    foreach ($refClass->getMethods() as $refMethod) {
+        echo "METHOD : " . $refMethod->getName(). "\n\n";
+        echo "getNumberOfParameters()         : " . $refMethod->getNumberOfParameters() . "\n";
+        echo "getNumberOfRequiredParameters() : " . $refMethod->getNumberOfRequiredParameters() . "\n";
+        echo "\n";
+        foreach ($refMethod->getParameters() as $refParameter) {
+            echo $refParameter . "\n";
+        }
+        echo "\n--------\n\n";
+    }
+    echo "</pre>\n";
+
+?>
+</div> 

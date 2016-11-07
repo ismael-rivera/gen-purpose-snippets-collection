@@ -1,0 +1,12 @@
+To delete a wordpress user role you need use this two lines:
+
+$wp_roles = new WP_Roles();
+$wp_roles->remove_role("your_role");
+
+if you want to list the roles before delete one of them:
+
+$wp_roles = new WP_Roles();
+$names = $wp_roles->get_names();
+print_r($names);
+
+no plugins needed, 100% guaranted!

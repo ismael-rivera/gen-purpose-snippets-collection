@@ -1,0 +1,15 @@
+<?php
+
+// $number ~ the original number
+// $length ~ the length to pad the number to
+
+function format_number($number, $length) {
+ $currentlength = strlen($number);
+ $add = ($length - $currentlength) + 1;
+ $arg = "%0{$add}d";
+ return sprintf($arg, $number);
+}
+
+echo format_number(22, 4); // 001
+
+?>

@@ -1,0 +1,126 @@
+<?php 
+
+/*Test these depending on which situation to be used*/
+echo __FILE__ . '</br>';
+echo dirname(__FILE__). '</br>';
+echo basename(__FILE__). '</br>';
+echo basename(dirname(__FILE__)). '</br>';
+echo $_SERVER['PHP_SELF'] . '</br>' ;
+echo $_SERVER['REQUEST_URI'] . '</br>' ;
+
+
+/*ALWAYS USE THIS ONE WHEN USING REQUIRE_ONCE AND INCLUE_ONCE, BASICALLY WHENEVER YOUR INCLUDING PHP EXTERNAL FILES*/
+
+echo $_SERVER['DOCUMENT_ROOT'] . '</br>' ;
+
+
+
+$path_1 = realpath($_SERVER['DOCUMENT_ROOT']);
+$path_2 = realpath(dirname($_SERVER['SCRIPT_FILENAME']));
+$path_3 = dirname(__FILE__);
+print_r(array($path_1, $path_2, $path_3));*/	
+
+?> 
+
+<?php
+# Using HTTP_HOST
+
+$domain = $_SERVER['HTTP_HOST'];
+echo $domain;
+?>
+
+-------------------------
+
+Suppose you are on a page : http://example.com/category/php/
+Now, the base URL or the main URL for the above link is : http://example.com
+
+Similarly, in the case of local machine (localhost),
+Suppose you are in the page : http://localhost/myproject/index.php?id=8
+Here, the base or main URL is : http://localhost/myproject
+
+Below is the code to get main or base URL from any URL link or path:-
+/**
+ * Suppose, you are browsing in your localhost
+ * http://localhost/myproject/index.php?id=8
+ */
+function getBaseUrl()
+{
+    // output: /myproject/index.php
+    $currentPath = $_SERVER['PHP_SELF'];
+     
+    // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
+    $pathInfo = pathinfo($currentPath);
+     
+    // output: localhost
+    $hostName = $_SERVER['HTTP_HOST'];
+     
+    // output: http://
+    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
+     
+    // return: http://localhost/myproject/
+    return $protocol.$hostName.$pathInfo['dirname']."/";
+}
+
+Hope this helps.
+
+
+------------------------------------
+
+function getBaseUrl()
+{
+    // output: /myproject/index.php
+    $currentPath = $_SERVER['PHP_SELF'];
+     
+    // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
+    $pathInfo = pathinfo($currentPath);
+     
+    // output: localhost
+    $hostName = $_SERVER['HTTP_HOST'];
+     
+    // output: http://
+    $protocol1 = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5));
+	$protocol1!=='http/'?$protocol2 ='https://':$protocol2='http://';
+	
+     // return: http://localhost/myproject/
+    return $protocol2.$hostName.$pathInfo['dirname']."/";
+	
+}
+
+function getHomeUrl()
+{
+    // output: /myproject/index.php
+    $currentPath = $_SERVER['PHP_SELF'];
+     
+    // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
+    $pathInfo = pathinfo($currentPath);
+     
+    // output: localhost
+    $hostName = $_SERVER['HTTP_HOST'];
+     
+    // output: http://
+    $protocol1 = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5));
+	$protocol1!=='http/'?$protocol2 ='https://':$protocol2='http://';
+	
+     // return: http://localhost/myproject/
+    return $protocol2.$hostName;
+	
+}
+
+//echo $protocol1;
+//echo $protocol2;
+//echo getHomeUrl();
+
+/*Test these depending on which situation to be used*/
+//# Using HTTP_HOST
+
+if (!defined('IRO_JMAP_HOME')){
+define( 'IRO_JMAP_HOME' , getHomeUrl());
+}
+//echo  '<p><h3>' . IRO_JMAP_HOME . '</h3><p>';
+
+$core = getHomeUrl() . '/core';
+if (!defined('IRO_JMAP_CORE')){
+define( 'IRO_JMAP_CORE' , $core);
+}
+//echo  '<p><a href="'. IRO_JMAP_CORE .'">' . IRO_JMAP_CORE . '</h3><p>';
+

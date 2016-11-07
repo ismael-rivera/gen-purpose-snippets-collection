@@ -1,0 +1,42 @@
+/*TAKE CARE OF ANY JQUERY CALLING WRAPPER CONFLICTS*/
+
+var $ = jQuery.noConflict();
+
+or
+
+( function( $ ) {
+$(document).ready(function(){
+
+   // alert('If this alert fires, then you're good to go.');
+
+});
+} )( jQuery );
+
+/*TEST TO SEE THAT JQUERY IS ACTIVATED AND WORKING*/
+
+ $(document).ready(function(){
+   /*alert('Testing 1...');
+   alert('2...');
+   alert('3...');*/
+ });
+ 
+ if (typeof jQuery == 'undefined') {  
+    // jQuery is not loaded 
+	/*alert('jQuery is not loaded');*/ 
+} else {
+    // jQuery is loaded
+	/*alert('jQuery is loaded');*/ 
+} 
+
+-------------------------------------------------------------------
+/*How to check your jQuery version*/
+
+Open up Firebug.
+Click on Console.
+Enter
+
+Code:
+
+jQuery.fn.jquery
+
+Click Run.

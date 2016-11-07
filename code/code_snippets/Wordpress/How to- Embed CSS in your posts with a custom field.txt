@@ -1,0 +1,22 @@
+
+Post Pic
+How to: Embed CSS in your posts with a custom field
+
+Sometimes, a specific post needs to be styled with some custom css styles. Sure, you can directly embed CSS in your post, but that not very clean. In this recipe, I’m going to show you how to embed css in a clean way, by using a custom field.
+
+---------------------------------------------------------------------------
+
+First, open your header.php file and insert the following code between the <head> and </head> html tags:
+
+<?php if (is_single()) {
+    $css = get_post_meta($post->ID, 'css', true);
+    if (!empty($css)) { ?>
+        <style type="text/css">
+        <?php echo $css; ?>   
+        </style>
+    <?php } 
+} ?>
+
+Once done, when you're writing a post or page which require some custom css styling, you'll just have to create a custom field named css and paste your custom css styles as a value. That's simple as that!
+If you enjoyed this article, please consider sharing it!
+Icon Icon Icon

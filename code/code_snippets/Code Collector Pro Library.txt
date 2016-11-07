@@ -1,0 +1,625 @@
+Getting Started
+============================================================
+Language: Other
+Licence: Other
+
+Welcome to Code Collector Pro. Using Code Collector Pro is pretty simple. To add or remove a snippet simply click on the toolbar icons above. To add a group or smart group use the buttons at the bottom of the source list. You can edit snippet details by bringing up the snippet info window from the window menu.
+
+We've included some snippets and groups to get you started
+
+
+
+HTML 4.01 Transitional
+============================================================
+Language: HTML
+Licence: Other
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+Objective-C Starter
+============================================================
+Language: Objective-C
+Licence: Other
+
+#import <Foundation/Foundation.h>
+
+int main (int argc, const char * argv[]) {
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+
+	NSLog(@"Hello World");
+	[pool release];
+	return 0;
+}
+
+
+
+HTML 4.01 Strict
+============================================================
+Language: HTML
+Licence: Other
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+Adding Bundles
+============================================================
+Language: Other
+Licence: Other
+
+Code Collector Pro allows you to add bundles to expand the list of languages available allowing them to have their syntax coloured. Code Collector Pro supports TextMate bundles, which are available from the online bundle respository (http://macromates.com/svn/Bundles/trunk/). Once you have downloaded a bundle you can add it by going into Preferences and clicking on the + button in the bundles section.
+
+
+
+XHTML 1.0 Transitional
+============================================================
+Language: HTML
+Licence: Other
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>untitled</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+PHP Starter
+============================================================
+Language: PHP
+Licence: Other
+
+<?php
+	print "Hello World";
+?>
+
+
+
+XHTML 1.0 Strict
+============================================================
+Language: HTML
+Licence: Other
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>untitled</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+C Starter
+============================================================
+Language: C
+Licence: Other
+
+#include <stdio.h> 
+
+int main() { 
+	printf("Hello World");
+	return 0;
+}
+
+
+
+Java Starter
+============================================================
+Language: Java
+Licence: Other
+
+class HelloWorld {
+	public static void main(String args[]) {
+		System.out.print("Hello World");
+	}
+}
+
+
+
+MySQL Database Connection Test 1
+============================================================
+Language: PHP
+Licence: Other
+
+ <?php  
+// Connect to the file above here  
+require "connect_to_mysql.php"; 
+
+echo "<h1>Success in database connection! Happy Coding!</h1>";  
+// if no success the script would have died before this success message
+?>
+
+
+
+Connect to MySQL Database 1
+============================================================
+Language: PHP
+Licence: Other
+
+ <?php 
+// Created BY Adam Khoury @ www.flashbuilding.com - 6/19/2008 
+/* 
+1: "die()" will exit the script and show an error statement if something goes wrong with the "connect" or "select" functions. 
+2: A "mysql_connect()" error usually means your username/password are wrong 
+3: A "mysql_select_db()" error usually means the database does not exist.
+*/
+// Place db host name. Sometimes "localhost" but 
+// sometimes looks like this: >>      ???mysql??.someserver.net
+$db_host = "place_your_db_host";
+// Place the username for the MySQL database here
+$db_username = "place_your_username"; 
+// Place the password for the MySQL database here
+$db_pass = "place_your_db_password"; 
+// Place the name for the MySQL database here
+$db_name = "place_your_db_name";
+
+// Run the actual connection here 
+mysql_connect("$db_host","$db_username","$db_pass") or die ("could not connect to mysql");
+mysql_select_db("$db_name") or die ("no database");             
+?>
+
+
+
+Create New Database
+============================================================
+Language: SQL (Rails)
+Licence: Other
+
+CREATE DATABASE database_name
+
+
+
+Multiple Domains for Ones Server
+============================================================
+Language: Other
+Licence: Other
+
+
+#DELETE ALL COMMENTS WHEN USING CODE
+#Our hosting service (Powweb) can host multiple domains or subdomains. There is 
+#a tool kit to cause it to happen or manage it, but it costs a little bit of 
+#money. If you don't need the extra domain name included in the tool kit, it can 
+#be done easily by adding a .htaccess file under the htdocs folder. Powweb uses #the Apache server, so I guess everyone has such a folder.
+#When you have two domains to host, create two folders to hold the content of 
+#the web sites. E.g. if you have two domain names such as 'domainA.com' and 
+#'domainB.com', then you create folders like 'domainA' and 'domainB'. Of course, 
+#inside these folders, you need at least an 'index.html' file. THEN
+#Use notepack to create a file called htaccess.txt and add the following lines
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/iroart/
+RewriteCond %{HTTP_HOST} ^(www\.)?iroart\.info
+RewriteRule ^(.*)$ iroart/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/screwtheblues/
+RewriteCond %{HTTP_HOST} ^(www\.)?screwtheblues\.com
+RewriteRule ^(.*)$ screwtheblues/$1 [L] 
+
+RewriteCond %{REQUEST_URI} !^/speggo/
+RewriteCond %{HTTP_HOST} ^(www\.)?speggo\.com
+RewriteRule ^(.*)$ speggo/$1 [L] 
+
+RewriteCond %{REQUEST_URI} !^/yodollay/
+RewriteCond %{HTTP_HOST} ^(www\.)?yodollay\.com
+RewriteRule ^(.*)$ yodollay/$1 [L]
+
+#Use FTP to deposit the file under the 'htdocs' folder, which now also has the domainA and domainB folders. Rename the file htaccess.txt #as .htaccess
+#
+#That is it! COPY and paste the content, it is easy to get typing mistakes.
+#Note: Line 1 and Line2 of the .htaccess file askes to redirect request to specific folders for specific URL asked.
+#Line 3 gives the folders to be directed to, i.e. domainA
+#Line 4 gives the name of the web page to be pointed to the folder given in Line 3
+#Line 5 is some rule, you don't need to know too much, if you want, visit Apache server and search for it. I forget!
+#
+#The other lines are just a repeat for the second domain.
+#You can create another set for a third domain, but you need to add another folder to hold the content, at least the index.html file.
+#
+#This works for me and save some money. The tool kit, as I was told, is annual charge!
+
+
+
+
+
+
+Embedding a font
+============================================================
+Language: CSS
+Licence: Other
+
+
+/*
+Just upload the font file you want to use to your server - making sure that you're not violating any copyright rules - then embed it, using the following CSS:
+*/
+@font-face {  
+	  font-family: yourFontName ;  
+	  src: url( /location/of/font/FontFileName.ttf ) format("truetype");  
+	}  
+	 
+	/* Then use it like you would any other font */  
+	.yourFontName { font-family: yourFontName , verdana, helvetica, sans-serif;  
+	} 
+
+
+
+Untitled Snippet
+============================================================
+Language: Other
+Licence: Other
+
+
+
+
+
+Pull Out Thumbnail
+============================================================
+Language: Other
+Licence: Other
+
+Place this code:
+
+http://img.youtube.com/vi/VIDEO_ID/default.jpg
+
+in the address bar and change where it says
+VIDEO_ID with the youtube video ID located in the URL of the video's page
+
+For Example here is the URL for the target video:
+
+http://www.youtube.com/watch?v=kB6DuahfLNE&feature=related
+
+The ID to be extracted is located right after v= and should be exactly 
+eleven characters, so what you should have as the ID should be this:
+
+kB6DuahfLNE
+
+Final code should look like this:
+
+http://img.youtube.com/vi/kB6DuahfLNE/default.jpg 
+
+Enter it into the address bar in your browser and copy the rendered image thumbnail
+to your desktop. Presto!! Instant Thumbnail!
+
+
+
+Username and Password
+============================================================
+Language: Other
+Licence: Other
+
+<form name="input" action="html_form_action.asp" method="get">
+Username: <input type="text" name="user" />
+<input type="submit" value="Submit" />
+</form>
+
+<form>
+Password: <input type="password" name="pwd" />
+</form>  
+
+
+
+FormToEmail
+============================================================
+Language: Other
+Licence: Other
+
+<?php
+
+error_reporting(E_ALL ^ E_NOTICE);
+
+/*
+
+Thank you for choosing FormToEmail by FormToEmail.com
+
+Version 2.5 April 16th 2009
+
+COPYRIGHT FormToEmail.com 2003 - 2009
+
+You are not permitted to sell this script, but you can use it, copy it or distribute it, providing that you do not delete this copyright notice, and you do not remove any reference or links to FormToEmail.com
+
+For support, please visit: http://formtoemail.com/support/
+
+You can get the Pro version of this script here: http://formtoemail.com/formtoemail_pro_version.php
+---------------------------------------------------------------------------------------------------
+
+FormToEmail-Pro (Pro version) Features:
+
+Check for required fields
+Attach file uploads
+Upload files to the server
+Securimage CAPTCHA support
+reCAPTCHA support
+textCAPTCHA support
+identiPIC photo CAPTCHA
+HTML output option
+Use email templates
+Show date and time submitted
+Create Message ID
+CSV output to attachment or file
+Autoresponder (with file attachment)
+Show sender's IP address
+Block IP addresses
+Block web addresses or rude words
+Block gibberish (MldMtrPAgZq etc)
+Block gobbledegook characters (≈  Á etc)
+Pre-populate the form
+Show errors on the form page
+Check for a set cookie
+Set encoding (utf-8 etc)
+Ignore fields
+Sort fields
+Auto redirect to "Thank You" page
+HTML template for "Thank You" page
+No branding
+Free upgrades for life
+
+---------------------------------------------------------------------------------------------------
+
+Confused by PHP and PERL scripts?  Don't have PHP on your server?  Can't send email from your server?
+
+Try our remotely hosted form service:
+
+http://FormToEmailRemote.com
+
+---------------------------------------------------------------------------------------------------
+
+FormToEmail DESCRIPTION
+
+FormToEmail is a contact-form processing script written in PHP. It allows you to place a form on your website which your visitors can fill out and send to you.  The contents of the form are sent to the email address (or addresses) which you specify below.  The form allows your visitors to enter their name, email address and comments.  The script will not allow a blank form to be sent.
+
+Your visitors (and nasty spambots!) cannot see your email address.  The script cannot be hijacked by spammers.
+
+When the form is sent, your visitor will get a confirmation of this on the screen, and will be given a link to continue to your homepage, or other page if you specify it.
+
+Should you need the facility, you can add additional fields to your form, which this script will also process without making any additional changes to the script.  You can also use it to process other forms.  The script will handle the "POST" or "GET" methods.  It will also handle multiple select inputs and multiple check box inputs.  If using these, you must name the field as an array using square brackets, like so: <select name="fruit[]" multiple>.  The same goes for check boxes if you are using more than one with the same name, like so: <input type="checkbox" name="fruit[]" value="apple">Apple<input type="checkbox" name="fruit[]" value="orange">Orange<input type="checkbox" name="fruit[]" value="banana">Banana
+
+** PLEASE NOTE **  If you are using the script to process your own forms (or older FormToEmail forms) you must ensure that the email field is named correctly in your form, like this for example: <input type="text" name="email">.  Note the lower case "email".  If you don't do this, the visitor's email address will not be available to the script and the script won't be able to check the validity of the email, amongst other things.  If you are using the form code below, you don't need to check for this.
+
+This is a PHP script.  In order for it to run, you must have PHP (version 4.1.0 or later) on your webhosting account, and have the PHP mail() function enabled and working.  If you are not sure about this, please ask your webhost about it.
+
+SETUP INSTRUCTIONS
+
+Step 1: Put the form on your webpage
+Step 2: Enter your email address and (optional) continue link below
+Step 3: Upload the files to your webspace
+
+Step 1:
+
+To put the form on your webpage, copy the code below as it is, and paste it into your webpage:
+
+<form action="FormToEmail.php" method="post">
+<table border="0" style="background:#ececec" cellspacing="5">
+<tr align="left"><td>Name</td><td><input type="text" size="30" name="name"></td></tr>
+<tr align="left"><td>Email address</td><td><input type="text" size="30" name="email"></td></tr>
+<tr align="left"><td valign="top">Comments</td><td><textarea name="comments" rows="6" cols="30"></textarea></td></tr>
+<tr align="left"><td>&nbsp;</td><td><input type="submit" value="Send"><font face="arial" size="1">&nbsp;&nbsp;<a href="http://FormToEmail.com">PHP Form</a> by FormToEmail.com</font></td></tr>
+</table>
+</form>
+
+Step 2:
+
+Enter your email address.
+
+Enter the email address below to send the contents of the form to.  You can enter more than one email address separated by commas, like so: $my_email = "info@example.com"; or $my_email = "bob@example.com,sales@example.co.uk,jane@example.com";
+
+*/
+
+$my_email = "delete these words and put the email address only in here between the quotes";
+
+/*
+
+Optional.  Enter a From: email address.  Only do this if you know you need to.  By default, the email you get from the script will show the visitor's email address as the From: address.  In most cases this is desirable.  On the majority of setups this won't be a problem but a minority of hosts insist that the From: address must be from a domain on the server.  For example, if you have the domain example.com hosted on your server, then the From: email address must be something@example.com (See your host for confirmation).  This means that your visitor's email address will not show as the From: address, and if you hit "Reply" to the email from the script, you will not be replying to your visitor.  You can get around this by hard-coding a From: address into the script using the configuration option below.  Enabling this option means that the visitor's email address goes into a Reply-To: header, which means you can hit "Reply" to respond to the visitor in the conventional way.  (You can also use this option if your form does not collect an email address from the visitor, such as a survey, for example, and a From: address is required by your email server.)  The default value is: $from_email = "";  Enter the desired email address between the quotes, like this example: $from_email = "contact@example.com";  In these cases, it is not uncommon for the From: ($from_email) address to be the same as the To: ($my_email) address, which on the face of it appears somewhat goofy, but that's what some hosts require.
+
+*/
+
+$from_email = "";
+
+/*
+
+Optional.  Enter the continue link to offer the user after the form is sent.  If you do not change this, your visitor will be given a continue link to your homepage.
+
+If you do change it, remove the "/" symbol below and replace with the name of the page to link to, eg: "mypage.htm" or "http://www.elsewhere.com/page.htm"
+
+*/
+
+$continue = "/";
+
+/*
+
+Step 3:
+
+Save this file (FormToEmail.php) and upload it together with your webpage containing the form to your webspace.  IMPORTANT - The file name is case sensitive!  You must save it exactly as it is named above!
+
+THAT'S IT, FINISHED!
+
+You do not need to make any changes below this line.
+
+*/
+
+$errors = array();
+
+// Remove $_COOKIE elements from $_REQUEST.
+
+if(count($_COOKIE)){foreach(array_keys($_COOKIE) as $value){unset($_REQUEST[$value]);}}
+
+// Validate email field.
+
+if(isset($_REQUEST['email']) && !empty($_REQUEST['email']))
+{
+
+$_REQUEST['email'] = trim($_REQUEST['email']);
+
+if(substr_count($_REQUEST['email'],"@") != 1 || stristr($_REQUEST['email']," ") || stristr($_REQUEST['email'],"\\") || stristr($_REQUEST['email'],":")){$errors[] = "Email address is invalid";}else{$exploded_email = explode("@",$_REQUEST['email']);if(empty($exploded_email[0]) || strlen($exploded_email[0]) > 64 || empty($exploded_email[1])){$errors[] = "Email address is invalid";}else{if(substr_count($exploded_email[1],".") == 0){$errors[] = "Email address is invalid";}else{$exploded_domain = explode(".",$exploded_email[1]);if(in_array("",$exploded_domain)){$errors[] = "Email address is invalid";}else{foreach($exploded_domain as $value){if(strlen($value) > 63 || !preg_match('/^[a-z0-9-]+$/i',$value)){$errors[] = "Email address is invalid"; break;}}}}}}
+
+}
+
+// Check referrer is from same site.
+
+if(!(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']) && stristr($_SERVER['HTTP_REFERER'],$_SERVER['HTTP_HOST']))){$errors[] = "You must enable referrer logging to use the form";}
+
+// Check for a blank form.
+
+function recursive_array_check_blank($element_value)
+{
+
+global $set;
+
+if(!is_array($element_value)){if(!empty($element_value)){$set = 1;}}
+else
+{
+
+foreach($element_value as $value){if($set){break;} recursive_array_check_blank($value);}
+
+}
+
+}
+
+recursive_array_check_blank($_REQUEST);
+
+if(!$set){$errors[] = "You cannot send a blank form";}
+
+unset($set);
+
+// Display any errors and exit if errors exist.
+
+if(count($errors)){foreach($errors as $value){print "$value<br>";} exit;}
+
+if(!defined("PHP_EOL")){define("PHP_EOL", strtoupper(substr(PHP_OS,0,3) == "WIN") ? "\r\n" : "\n");}
+
+// Build message.
+
+function build_message($request_input){if(!isset($message_output)){$message_output ="";}if(!is_array($request_input)){$message_output = $request_input;}else{foreach($request_input as $key => $value){if(!empty($value)){if(!is_numeric($key)){$message_output .= str_replace("_"," ",ucfirst($key)).": ".build_message($value).PHP_EOL.PHP_EOL;}else{$message_output .= build_message($value).", ";}}}}return rtrim($message_output,", ");}
+
+$message = build_message($_REQUEST);
+
+$message = $message . PHP_EOL.PHP_EOL."-- ".PHP_EOL."Thank you for using FormToEmail from http://FormToEmail.com";
+
+$message = stripslashes($message);
+
+$subject = "FormToEmail Comments";
+
+$subject = stripslashes($subject);
+
+if($from_email)
+{
+
+$headers = "From: " . $from_email;
+$headers .= PHP_EOL;
+$headers .= "Reply-To: " . $_REQUEST['email'];
+
+}
+else
+{
+
+$from_name = "";
+
+if(isset($_REQUEST['name']) && !empty($_REQUEST['name'])){$from_name = stripslashes($_REQUEST['name']);}
+
+$headers = "From: {$from_name} <{$_REQUEST['email']}>";
+
+}
+
+mail($my_email,$subject,$message,$headers);
+
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<head>
+<title>Form To Email PHP script from FormToEmail.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<div>
+<center>
+<b>Thank you <?php if(isset($_REQUEST['name'])){print stripslashes($_REQUEST['name']);} ?></b>
+<br>Your message has been sent
+<p><a href="<?php print $continue; ?>">Click here to continue</a></p>
+<p><b>FormToEmail</b> by <a href="http://FormToEmail.com">FormToEmail.com</a></p>
+</center>
+</div>
+
+</body>
+</html>
+
+
+
+cross-browser DropShadow
+============================================================
+Language: Other
+Licence: Other
+
+.shadowout {
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+
+
+linking custom stylesheet
+============================================================
+Language: Other
+Licence: Other
+
+This is the snippet to connect your reset.css and style.css
+template_url returns the full path of your wordpress installation
+
+<link rel="stylesheet" <href="<php? bloginfo('template_url'); ?>yoursubdrirectory/yourstylesheet.css" type="text/css"  media="screen"/>
+
+
+
+Unzip File Inside Remote Server
+============================================================
+Language: Other
+Licence: Other
+
+<?php 
+system('unzip wordpress-3.0.1.zip'); 
+?> 
+
+
+
+

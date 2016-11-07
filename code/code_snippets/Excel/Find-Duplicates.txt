@@ -1,0 +1,4 @@
+=IF(MAX(COUNTIF(A1:A11,A1:A11))>1,"Duplicate","No Duplicate")
+
+REFERENCE VIDEO:
+https://www.youtube.com/watch?v=5B0w-Xlnmqw

@@ -1,0 +1,3 @@
+Place this code between </head> ending tag and beginning <body> tag of your site.
+
+<?php flush(); ?>

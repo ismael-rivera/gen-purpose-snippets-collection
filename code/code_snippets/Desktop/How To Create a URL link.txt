@@ -1,0 +1,4 @@
+[InternetShortcut]
+URL=http://hints.macworld.com/article.php?story=20040111200114634
+
+[for this to work in safari, you have to leave an empty line space at the end of the script. Otherwise safari will open it in an empty window. Also omit this text.]

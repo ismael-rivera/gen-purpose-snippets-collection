@@ -1,0 +1,2 @@
+Example
+//Select every '#content a' that has an 'img' as a child

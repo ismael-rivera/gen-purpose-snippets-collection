@@ -1,0 +1,15 @@
+function startsWith($haystack, $needle)
+{
+    return $needle === "" || strpos($haystack, $needle) === 0;
+}
+function endsWith($haystack, $needle)
+{
+    return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+}
+
+$content = '[dallas]';
+
+//if(startsWith($content, "[")){ echo 'true';} else { echo 'false';} // true
+//if(endsWith($content, "]")){ echo 'true';} else { echo 'false';} // true;   // true
+
+if(startsWith($content, "[") && endsWith($content, "]")){ echo 'true';} else { echo 'false';} // true

@@ -1,0 +1,9 @@
+$sql = "SHOW tables";
+    $rs = mysql_query($sql);
+
+    while($row = mysql_fetch_array($rs))
+    {
+        $tbl = $row[0];
+        $sql = "ALTER TABLE $tbl  ENGINE=INNODB";
+         mysql_query($sql);
+    }

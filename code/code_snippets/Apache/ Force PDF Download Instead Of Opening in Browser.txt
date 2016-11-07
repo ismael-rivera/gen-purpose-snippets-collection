@@ -1,0 +1,9 @@
+With the following snippet, you will force your browser to save and open PDF files instead of opening within the browser.
+Open your .htaccess file and place the following code within it:
+
+-------------PASTE THE CODE BELOW THIS LINE---------
+
+<Files *.pdf>
+  ForceType application/octet-stream
+  Header set Content-Disposition attachment
+</Files>

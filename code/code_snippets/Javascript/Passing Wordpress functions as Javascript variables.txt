@@ -1,0 +1,11 @@
+You could avoid hardcoding the full path by setting a JS variable in the header of your template, before wp_head() is called, holding the template URL. Like:
+
+<script type="text/javascript">
+var templateUrl = '<?= get_bloginfo("template_url"); ?>';
+var pluginsUrl = '<?= plugins_url(); ?>';
+</script>
+
+And use that variable to set the background (I realize you know how to do this, I only include these details in case they helps others):
+
+Reset.style.background = " url('"+templateUrl+"/images/searchfield_clear.png') ";
+

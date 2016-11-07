@@ -1,0 +1,27 @@
+<div id='first' class='left equal_height'>  
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>  
+</div>  
+  
+<div id='second' class='left equal_height'>  
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>  
+</div> 
+    
+
+$(document).ready(function(){  
+        //set the starting bigestHeight variable  
+        var biggestHeight = 0;  
+        //check each of them  
+        $('.equal_height').each(function(){  
+            //if the height of the current element is  
+            //bigger then the current biggestHeight value  
+            if($(this).height() > biggestHeight){  
+                //update the biggestHeight with the  
+                //height of the current elements  
+                biggestHeight = $(this).height();  
+            }  
+        });  
+        //when checking for biggestHeight is done set that  
+        //height to all the elements  
+        $('.equal_height').height(biggestHeight);  
+      
+    });  

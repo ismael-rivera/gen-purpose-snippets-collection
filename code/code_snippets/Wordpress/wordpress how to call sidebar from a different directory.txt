@@ -1,0 +1,3 @@
+wordpress how to call sidebar from a different directory
+
+<?php include (TEMPLATEPATH . '/widget-name/widget-name.php'); ?>

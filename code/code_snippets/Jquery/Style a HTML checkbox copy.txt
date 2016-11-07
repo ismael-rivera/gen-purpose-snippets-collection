@@ -1,0 +1,17 @@
+Style a HTML checkbox
+
+Is it possible to use CSS to stylize checkboxes as you can with any other form element, without using javascript?
+
+
+
+$(document).ready(function() {	 	
+	$('input[type=checkbox]').each(function() {
+		$(this).wrap(function() {
+			return ($(this).is(':checked')) ? '<div class="custom_checkbox selected" />' : '<div class="custom_checkbox" />';
+		});
+	});
+	
+	$('.custom_checkbox input[type=checkbox]').click(function () {
+		$(this).parent().toggleClass('selected');
+	});
+});

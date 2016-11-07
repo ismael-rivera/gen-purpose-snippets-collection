@@ -1,0 +1,13 @@
+Non-Breaking Space in HTML
+
+In HTML coding, the non-breaking space is a character entity which can:
+
+    create white space between words or web page elements
+    stop the browser from breaking a line in the wrong place.
+
+Normally, if there are not any non-breaking spaces used, the browser will break up lines of text or content to suit the available space in your web design or the browser window. The content will flow within the space available. You can see an example of this in the article Not Designing for Most Common Screen Resolution at Web Page Mistakes. As the resolution of the monitor is changed, the flow of content adjusts.
+Non-Breaking Space Coding in HTML
+
+As mentioned above, non-breaking space is an character entity. To insert a non-breaking space you would use:
+
+&nbsp;

@@ -1,0 +1,21 @@
+A JavaScript regular expression begins and ends with a forward slash (/). The characters or character combinations explained in Table 1 have special meaning in a Javascript regular expression.
+
+Table 1. Javascript characters
+Characters 	Meaning
+\ 	The escape character - the following character is to be treated as a literal character.
+[...] 	Matches any one character between the brackets. A range of characters can be indicated by a hyphen; for example, /[a-f]/ matches any character between a and f inclusive.
+[^...] 	Matches any one character not between the brackets.
+. 	Matches any character.
+
+	
+\w 	Matches any word character - equivalent to [a-zA-Z0-9].
+\W 	Matches any nonword character - equivalent to [^a-zA-Z0-9]. The user preference to use case-sensitive matching must be set for this to work.
+\d 	Matches any digit - equivalent to [0-9].
+\D 	Matches any character other than a digit - equivalent to [^0-9]. The user preference to use case-sensitive matching must be set for this to work.
+? 	Matches zero or one occurrence of the previous item.
++ 	Matches one or more occurrences of the previous item.
+* 	Matches zero or more occurrences of the previous item.
+{n,m} 	Matches the previous item at least n times but no more than m times.
+{n} 	Matches the previous item exactly n times.
+
+A full description of JavaScript regular expressions can be found in JavaScript: The Definitive Guide, published by O'Reilly and Associates. 

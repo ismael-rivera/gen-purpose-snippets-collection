@@ -1,0 +1,44 @@
+/*
+Every time I create a custom post type that requires a thumbnail of some sort, it only make sense to use WordPress’s built in Featured Image functionality. Problem being, the default ‘Featured Image’ meta box isn’t totally self-explanatory to your clients (and if you’re mildly OCD like me, it bothers you even for your own site). Let’s change that copy on a per-post-type basis.
+
+All that’s required is the use of the gettext hook. The below code, in your theme’s functions.php, will change both ‘Featured Image’ to ‘Album Cover’ and ‘Set a featured image’ to ‘Select an image’.
+*/
+
+function album_featured_image_alttext($translation, $text, $domain) {
+	global $post;
+	if ($post-&gt;post_type == 'album') {
+	        $translations = &amp;get_translations_for_domain( $domain);
+	        if ( $text == 'Featured Image')
+	            return $translations-&gt;translate( 'Album Cover' );
+		if ( $text == 'Set featured image')
+	            return $translations-&gt;translate( 'Select an image' );
+	}
+	return $translation;
+}
+add_filter('gettext', 'album_featured_image_alttext', 10, 4);
+
+------------------------------------------------------------------
+
+/*It’s that simple. To take it one step further, depending on how many custom post types you’re using, you could expedit this change and apply it to all of your post types in one function using a switch:*/
+
+function swap_featured_image_metabox($translation, $text, $domain) {
+	global $post;
+	$translations = &amp;get_translations_for_domain( $domain);
+	switch( $post-&gt;post_type ){
+		case 'album':
+			if ( $text == 'Featured Image')
+	            return $translations-&gt;translate( 'Album Cover' );
+			break;
+		case: 'banner':
+			if ( $text == 'Featured Image')
+	            return $translations-&gt;translate( 'Banner Image' );
+			break;
+	}
+	if ( $text == 'Set featured image')
+		return $translations-&gt;translate( 'Select an image' );
+ 
+	return $translation;
+}
+add_filter('gettext', 'swap_featured_image_metabox', 10, 4);
+
+------------------------------------------------------------------

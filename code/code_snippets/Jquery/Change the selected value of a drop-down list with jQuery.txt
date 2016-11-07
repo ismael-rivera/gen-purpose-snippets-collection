@@ -1,0 +1,3 @@
+Change the selected value of a drop-down list with jQuery
+
+$(".formclass").val('2');

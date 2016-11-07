@@ -1,0 +1,9 @@
+start Mysql in command line
+
+/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -p5es6rx6no8322zs
+
+show databases;
+
+use yourdatabasenamehere;
+
+show tables;

@@ -1,0 +1,16 @@
+When using forms within your web site, there may be times when you will want to include an example of what you'd like your visitors to fill in your form field. Although you could place some default text within your form field, your users would need to delete the default text in order to type in their own information.
+
+However, this cool little JavaScript code will enable you to display some example default text within a text box that will disappear when clicked on - much better than your users having to delete the example text.
+
+Example:
+
+Place your cursor inside the text box to see the text disappear.
+
+Place your form code within your HTML like this:
+
+<FORM action="http://www.domain.com" method="post">
+<INPUT type="text" size="25" value="Enter Your Default Text Here" onFocus="if(this.value == 'Enter Your Default Text Here') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Enter Your Default Text Here';}" />
+<INPUT type=submit value=Submit>
+</FORM>
+
+Change the default text displayed within your text box by editing the code indicated in bold. 

@@ -1,0 +1,4 @@
+//GET UPLOADS DIRECTORY
+<?php $upload_dir = wp_upload_dir(); ?>
+<?php echo $upload_dir['baseurl']; ?>
+

@@ -1,0 +1,16 @@
+Capture the packet trace
+
+Open Terminal, which is in the Utilities folder of your Applications folder,.
+Type the following command, but replace BSDname with the BSD device name (such as en0, en1, or ppp0) from System Information: 
+
+sudo tcpdump -i BSDname -s 0 -B 524288 -w ~/Desktop/DumpFile01.pcap
+
+Press Return, then enter your administrator password when prompted.
+Terminal should say tcpdump: listening on... to incidate that it's listening for activity on that network interface.
+While Terminal is open, perform the network function that you want to test.
+When the network function is complete, return to Terminal and press Control-C to capture the packet trace. Terminal saves it to your desktop in a file named "DumpFile01.pcap." 
+To see the contents of the file, use this command in Terminal:
+
+tcpdump -s 0 -n -e -x -vvv -r ~/Desktop/DumpFile01.pcap
+
+To capture additional packet traces, modify the Terminal command to increment the number of the saved file (DumpFile02.pcap, DumpFile03.pcap, and so on).

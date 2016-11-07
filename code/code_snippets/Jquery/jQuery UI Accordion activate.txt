@@ -1,0 +1,3 @@
+jQuery UI Accordion activate
+
+$("#accordion").accordion({active:"h3:last"})

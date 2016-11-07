@@ -1,0 +1,27 @@
+//Place this code inside of functions
+
+function my_login_logo_url() {
+    return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+function my_login_logo() { ?>
+    <style type="text/css">
+	    #loginform{
+	border: 1px solid #666;
+	-webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.49);
+    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.49);
+     box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.49);			
+			}
+	    body.login {
+	background: #F3F8FB;
+			}
+        body.login div#login h1 a {
+			width: 256px;
+			height: 124px;
+			margin:auto;
+            padding-bottom: 30px;
+			background: #F3F8FB url(<?php echo get_bloginfo( 'template_directory' ) ?>/img/ari_aclu_logo.png) no-repeat;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );

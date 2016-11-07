@@ -1,0 +1,8 @@
+<?php
+
+   header( 'Location: http://www.yoursite.com/new_page.html' ) ;
+
+?>
+
+Change the code on the redirect page to be simply this. You need to replace the URL above with the URL you wish to direct to.
+Be sure that you do not have any text sent to the browser before this, or it will not work. Your safest bet is to simply remove all content from the page but the redirect code. 

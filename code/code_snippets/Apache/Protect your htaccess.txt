@@ -1,0 +1,10 @@
+Protect your .htaccess
+
+After tweaking your .htaccess to protect your blog from hackers, you cannot simply leave the .htaccess open itself to attacks. The hack below prevents external access to any file with .hta . Simply place the code in your domain’s root .htaccess file.
+
+# STRONG HTACCESS PROTECTION</code>
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</Files>

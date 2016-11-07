@@ -1,0 +1,2 @@
+
+drop database your_database_name;

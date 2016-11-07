@@ -1,0 +1,3 @@
+To add a little caveat to my first suggestion. If you have a large db (and I mean very large) opening the file in a text editor depending on the editor and the amount of free RAM you have can be a little dicey. So use the sed command in bash to replace the old hostname (i.e. localhost) with your domain name :)
+
+sed -i.bak 's/localhost/www.pryde-design,co.uk/g' db.sql 

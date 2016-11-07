@@ -1,0 +1,33 @@
+
+Having a link that allows visitors to send email from your website can be a great addition to your site, making it easy for your visitors to send questions or comments.
+
+There is a special link for this action.
+
+Email links are done much the same as links to other pages, using the
+<a href> tag.
+
+An email link would require the following code:
+
+<a href="mailto:youremailaddress">Email Me</a>
+
+
+This will result in the visitor's email program opening a new email with your address already in the To: field.
+
+
+
+If you wish to have a specific subject in the email, you can add it to the html code using subject= setting :
+
+<a href="mailto:email@echoecho.com?subject=SweetWords">
+Send Email</a>
+
+
+
+Suppose you want an email link for your visitors containing specific text in the body of their message, simply add &body=:
+
+<a href="mailto:email@echoecho.com?body=Please send me a copy of your new program!">Send Email</a>
+
+
+Or combine all the options and allow your visitor to send email with the address, subject and text already entered.
+
+<a href="mailto:email@echoecho.com?subject=SweetWords
+&body=Please send me a copy of your new program!">Email Me</a>

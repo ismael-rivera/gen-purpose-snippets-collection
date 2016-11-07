@@ -1,0 +1,8 @@
+This snippet will enable you to add shortcode to a wordpress custom field. Normally wordpress does not run shortcodes that you put into a custom field. Just put this code into whatever page you are displaying the results of the shortcode, and change the 'your_custom_field_here' to the name of your custom field. 
+
+<?php echo apply_filters('the_content', get_post_meta($post->ID, 'your_custom_field_here', true)); ?> 
+
+or
+
+if ( get_post_meta($post->ID, 'quick_form', true) )
+echo do_shortcode(get_post_meta($post->ID, 'quick_form', $single = true));

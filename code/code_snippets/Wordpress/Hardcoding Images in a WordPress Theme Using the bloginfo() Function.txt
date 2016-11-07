@@ -1,0 +1,25 @@
+Hardcoding Images in a WordPress Theme Using the bloginfo() Function
+
+Feb 09, 2011 | Comments are fun, leave one! »
+
+If you are creating a WordPress theme and you need to code in an image, you may notice that you need an absolute path rather than a relative one. If you are confused on the difference between the two:
+
+A relative image path
+
+<img src = 'images/picture.jpg' alt = 'Picture' />
+
+An absolute path
+
+<img src = 'http://www.buckleupstudios.com/wp-content/themes/themeFolder/images/picture.jpg' alt = 'Picture' />
+
+WordPress page templates need an absolute link. You can hardcode the whole absolute link, but that gets tedious and can break your code if you ever have to change your file structure. The best bet is to use the bloginfo(‘template_directory’); function to do it for you.
+
+bloginfo(‘template_directory’); is a PHP function that inserts the path to your template directory. Therefore, <?php bloginfo(‘template_directory’);?> equals “http://www.buckleupstudios.com/wp-content/themes/themeFolder” after PHP does its magic.
+
+So for example, if you code…
+
+<img src = '<?php bloginfo('template_directory'); ?>/images/picture.jpg' alt = 'Picture' />
+
+…it will dynamically hardcode an image into your WordPress theme! You can also use this function for linking things like your stylesheet and javascript in the <head> of your file as well.
+
+Check out the WordPress Codex on bloginfo(); for more great uses.

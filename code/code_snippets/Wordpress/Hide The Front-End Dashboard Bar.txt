@@ -1,0 +1,5 @@
+Since v3.1, WordPress has provided a front-end admin bar for all users. Depending on your intent, this can detract from the look of your site. To disable it, use the show_admin_bar function:
+
+    show_admin_bar(FALSE);  
+
+You can also disable this from your User Profile, but this is especially useful if you’ve got a ton of authors/members on the site and you need to disable the bar altogether.
